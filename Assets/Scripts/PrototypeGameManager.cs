@@ -179,7 +179,7 @@ public class PrototypeGameManager : MonoBehaviour
             GUI.Box(new Rect(20, Screen.height - 90, 520, 55), message);
         }
 
-        GUI.Label(new Rect(20, Screen.height - 35, 520, 25), "WASD move  |  Mouse look  |  E interact  |  Esc unlock mouse", labelStyle);
+        GUI.Label(new Rect(20, Screen.height - 35, 620, 25), "WASD move  |  Mouse look  |  E interact  |  Esc unlock mouse  |  Click relock mouse", labelStyle);
     }
 
     private void DrawHouseTasks(GUIStyle labelStyle)

@@ -28,15 +28,24 @@ public class SimpleFirstPersonPlayer : MonoBehaviour
 
     void Update()
     {
+        HandleMouseLock();
         LookAround();
         MovePlayer();
         UpdatePrompt();
         TryInteract();
+    }
 
+    void HandleMouseLock()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+        else if (Cursor.lockState != CursorLockMode.Locked && Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
@@ -121,6 +130,16 @@ public class SimpleFirstPersonPlayer : MonoBehaviour
 
     void OnGUI()
     {
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            GUIStyle lockStyle = new GUIStyle(GUI.skin.label);
+            lockStyle.fontSize = 18;
+            lockStyle.alignment = TextAnchor.MiddleCenter;
+            lockStyle.normal.textColor = Color.white;
+
+            GUI.Label(new Rect(Screen.width / 2 - 180, Screen.height / 2 + 55, 360, 30), "Click to lock mouse", lockStyle);
+        }
+
         if (string.IsNullOrEmpty(currentPrompt))
         {
             return;

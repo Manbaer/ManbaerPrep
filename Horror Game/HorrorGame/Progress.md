@@ -21,3 +21,14 @@
 - Added simple on-screen task text, messages, and interaction prompts.
 - Verified both prototype scenes with Unity scene validation.
 - Checked the Unity console; no errors or warnings were reported.
+
+2026-07-07 Bug Fixes
+
+- Fixed mouse locking:
+  - Esc still unlocks the mouse.
+  - Left mouse click now locks the mouse again.
+  - Updated the on-screen controls text to mention click-to-relock.
+- Fixed the dream hallway spawn:
+  - Added a wall behind the player spawn so turning around no longer shows an open end.
+- Verified the dream hallway and house scenes with Unity scene validation.
+- Checked the Unity console; no errors or warnings were reported.
