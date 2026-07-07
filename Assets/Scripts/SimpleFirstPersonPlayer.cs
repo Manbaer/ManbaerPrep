@@ -37,12 +37,9 @@ public class SimpleFirstPersonPlayer : MonoBehaviour
 
     void HandleMouseLock()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (Cursor.lockState != CursorLockMode.Locked && Input.GetMouseButtonDown(0))
+        // If something else unlocks the cursor during gameplay, clicking the game view locks it again.
+        // The pause menu owns the Escape key, so this script does not use Escape anymore.
+        if (Time.timeScale > 0f && Cursor.lockState != CursorLockMode.Locked && Input.GetMouseButtonDown(0))
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -130,7 +127,7 @@ public class SimpleFirstPersonPlayer : MonoBehaviour
 
     void OnGUI()
     {
-        if (Cursor.lockState != CursorLockMode.Locked)
+        if (Time.timeScale > 0f && Cursor.lockState != CursorLockMode.Locked)
         {
             GUIStyle lockStyle = new GUIStyle(GUI.skin.label);
             lockStyle.fontSize = 18;
