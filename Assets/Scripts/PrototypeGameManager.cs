@@ -115,15 +115,25 @@ public class PrototypeGameManager : MonoBehaviour
     {
         if (sceneName == dreamSceneName)
         {
-            return "Dream hallway. Find the strange door.";
+            return "The hallway remembers things wrong. Fix them.";
         }
 
-        if (strangeDoorOpened || StoryFlagManager.EnsureExists().HasFlag(StoryFlags.DreamOneComplete))
+        if (HasFinishedFirstDream())
         {
             return "You wake up. Something new is in the room.";
         }
 
         return "A quiet day in the house.";
+    }
+
+    private bool HasFinishedFirstDream()
+    {
+        // The old strange-door flow used DreamOneComplete.
+        // The new hallway puzzle sets DreamHallwayComplete. Accept both.
+        StoryFlagManager flagManager = StoryFlagManager.EnsureExists();
+        return strangeDoorOpened
+            || flagManager.HasFlag(StoryFlags.DreamOneComplete)
+            || flagManager.HasFlag(StoryFlags.DreamHallwayComplete);
     }
 
     private void ApplyHouseChanges()
@@ -147,7 +157,7 @@ public class PrototypeGameManager : MonoBehaviour
             return;
         }
 
-        bool shouldShowDreamChange = strangeDoorOpened || StoryFlagManager.EnsureExists().HasFlag(StoryFlags.DreamOneComplete);
+        bool shouldShowDreamChange = HasFinishedFirstDream();
         Renderer[] renderers = changedObject.GetComponentsInChildren<Renderer>(true);
         Collider[] colliders = changedObject.GetComponentsInChildren<Collider>(true);
 
@@ -162,7 +172,7 @@ public class PrototypeGameManager : MonoBehaviour
         }
     }
 
-    private void ShowMessage(string newMessage)
+    public void ShowMessage(string newMessage)
     {
         message = newMessage;
         messageTimer = 5f;
@@ -178,13 +188,14 @@ public class PrototypeGameManager : MonoBehaviour
 
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if (sceneName == houseSceneName)
+        if (sceneName == houseSceneName && DayManager.Instance == null)
         {
+            // The DayManager draws its own day-aware task list when present.
             DrawHouseTasks(labelStyle);
         }
         else if (sceneName == dreamSceneName)
         {
-            GUI.Label(new Rect(20, 20, 420, 35), "Dream: find and open the strange door.", labelStyle);
+            GUI.Label(new Rect(20, 20, 520, 35), "Dream: interact with the one wrong thing in each part of the hallway.", labelStyle);
         }
 
         if (messageTimer > 0f)

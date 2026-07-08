@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTask 01 is the recommended next real development task.
+CurrentTasks 01 through 04 are done. CurrentTask 05 (wheat field dream blockout) is the recommended next task.
 
 The project already has:
 
@@ -46,7 +46,7 @@ The next goal is to turn that simple flow into the first real vertical slice fro
 
 ## CurrentTask 01: Upgrade The Hallway Dream Puzzle
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]].
 
 Design source:
 
@@ -88,7 +88,7 @@ Done when:
 
 ## CurrentTask 02: Add First Wake-Up Consequences
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 03). Verified in Play Mode; see [[Progress]].
 
 Design source:
 
@@ -126,7 +126,7 @@ Done when:
 
 ## CurrentTask 03: Make The House A Stronger Hub
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 02). Verified in Play Mode; see [[Progress]].
 
 Design source:
 
@@ -163,7 +163,7 @@ Done when:
 
 ## CurrentTask 04: Add Day Progression And Sleep Routine
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Day 2 currently ends with "sleep will not come" until the wheat field dream exists (CurrentTask 05); add "DreamHallway" replacement scene name to the Day 2 plan once built.
 
 Design source:
 

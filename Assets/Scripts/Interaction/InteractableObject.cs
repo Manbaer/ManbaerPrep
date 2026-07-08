@@ -24,6 +24,10 @@ public class InteractableObject : MonoBehaviour
     public bool loadSceneAfterInteraction;
     public string sceneToLoad;
 
+    [Header("Feedback")]
+    // Shown in the on-screen message box after a successful interaction.
+    public string screenMessage;
+
     [Header("Optional Extras")]
     public string debugMessage;
     public bool onlyUseOnce;
@@ -49,6 +53,12 @@ public class InteractableObject : MonoBehaviour
             if (!string.IsNullOrWhiteSpace(missingRequirementMessage))
             {
                 Debug.Log(missingRequirementMessage);
+
+                // Also show the warning on screen when the prototype message box exists.
+                if (PrototypeGameManager.Instance != null)
+                {
+                    PrototypeGameManager.Instance.ShowMessage(missingRequirementMessage);
+                }
             }
 
             if (callLegacyWhenRequirementsMissing)
@@ -64,6 +74,11 @@ public class InteractableObject : MonoBehaviour
         if (!string.IsNullOrWhiteSpace(debugMessage))
         {
             Debug.Log(debugMessage);
+        }
+
+        if (!string.IsNullOrWhiteSpace(screenMessage) && PrototypeGameManager.Instance != null)
+        {
+            PrototypeGameManager.Instance.ShowMessage(screenMessage);
         }
 
         if (setStoryFlag)

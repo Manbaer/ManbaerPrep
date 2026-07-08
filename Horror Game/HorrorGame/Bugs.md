@@ -10,6 +10,10 @@ When playing the scene, here are the bugs I noticed:
   - WorldStateApplier now turns renderers and colliders back on when enabling consequence objects.
   - WorldStateApplier also reapplies changes when its scene finishes loading.
 
+- Fixed: The wrong lamp in the dream hallway kept flickering after the player fixed it.
+  - Fixing the lamp now stops the flicker and turns the light off.
+  - Resetting the hallway brings the flicker back.
+
 - Fixed: The bed could be used immediately before finishing the house tasks.
   - The modular InteractableObject now supports required story flags.
   - The bed now requires WatchedTV, CheckedAnsweringMachine, and KitchenLightOff before it can load the dream hallway.
