@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTasks 01 through 04 are done. CurrentTask 05 (wheat field dream blockout) is the recommended next task.
+CurrentTasks 01 through 06 are done. CurrentTask 07 (power consequences in the house) is the recommended next task.
 
 The project already has:
 
@@ -197,7 +197,7 @@ Done when:
 
 ## CurrentTask 05: Build Wheat Field Dream Blockout
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 06). Verified in Play Mode; see [[Progress]]. Audio (wind/hum) is still placeholder-silent; add during the polish pass.
 
 Design source:
 
@@ -231,7 +231,7 @@ Done when:
 
 ## CurrentTask 06: Add Wheat Field Circuit Puzzle
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 05). Symbol-order style chosen; clue ties to the day 2 house changes. Verified in Play Mode; see [[Progress]].
 
 Design source:
 

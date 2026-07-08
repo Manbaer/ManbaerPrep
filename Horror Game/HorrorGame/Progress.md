@@ -218,6 +218,41 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-08 CurrentTask 05 + 06: Wheat Field Dream And Circuit Puzzle
+
+- Built Assets/Scenes/DreamWheatField.unity, the second dream (added to Build Settings):
+  - Night field with dark ambient light, exponential fog, dim blue moonlight, and a pale moon in the sky.
+  - ~240 scattered walk-through wheat stalks.
+  - Six electrical poles in a line with crossbars, symbol boxes, and lamps: Tree, Clock, Moon, Door, Eye, House.
+  - A dead fuse box near the start with the clue:
+    "THE HOUSE REMEMBERS - wrong time, open door, covered eye, empty house, goodnight."
+  - A distant dark house whose windows and glow light turn on when the circuit is restored.
+  - A hidden exit door between two poles that appears after the puzzle.
+- Player, managers, and the pause menu were copied from DreamHallway so all scenes share one setup.
+- Chose the symbol-order puzzle style (CurrentTask 06):
+  - Correct order: Clock, Door, Eye, House, Moon - each maps to a day 2 house observation
+    (impossible clocks, ajar bedroom door, covered mirror, empty house photo, the goodnight message).
+  - Tree is a decoy pole that is never correct.
+  - Correct poles light their lamp and update the objective progress (x of 5 poles).
+  - A wrong pole kills the hum and turns every pole off again.
+  - Solving lights the distant house, reveals the door, and sets WheatFieldPowerRestored.
+- New beginner-friendly scripts in Assets/Scripts/Dream:
+  - WheatPole.cs (symbol + lamp, hooks into InteractableObject)
+  - WheatFieldPuzzleManager.cs (ordered sequence, reset, reveal, flag)
+- Day system hookup:
+  - Day 2 sleep now loads DreamWheatField.
+  - WheatFieldPowerRestored advances the day count; waking after it starts Day 3.
+  - Added a Day 3 stub plan ("The power came back with you. Look around.") until CurrentTask 07 adds real consequences.
+- PrototypeGameManager got wheat-field start text and HUD hint lines.
+- Verified in Play Mode (full run from Day 1):
+  - Day 1 -> hallway dream -> Day 2 -> wheat field.
+  - The exit door starts hidden; a wrong pole resets progress to 0.
+  - The correct order restores power, lights the house, reveals the door, sets the flag.
+  - The door returns to the house and Day 3 begins with the stub objective.
+  - Day 3 bed shows the cannot-sleep message.
+- Tuned the night look (matte materials, denser fog, dimmer moonlight) after a washed-out first pass.
+- Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
+
 2026-07-08 CurrentTask 04: Day Progression And Sleep Routine
 
 - Added a simple day system to HousePrototype:

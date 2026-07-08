@@ -2606,6 +2606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayManager
   dreamCompletionFlags:
   - DreamHallwayComplete
+  - WheatFieldPowerRestored
   days:
   - dayNumber: 1
     dayStartObjective: Finish your evening routine, then sleep.
@@ -2633,6 +2634,13 @@ MonoBehaviour:
     - SawCoveredMirror
     - CheckedFridge
     bedNotReadyMessage: Not yet. Look at what changed first.
+    dreamSceneToLoad: DreamWheatField
+    cannotSleepMessage: 
+  - dayNumber: 3
+    dayStartObjective: The power came back with you. Look around.
+    taskLabels: []
+    requiredFlagsForSleep: []
+    bedNotReadyMessage: 
     dreamSceneToLoad: 
     cannotSleepMessage: You lie down, but sleep will not come. Not yet.
   currentDay: 1

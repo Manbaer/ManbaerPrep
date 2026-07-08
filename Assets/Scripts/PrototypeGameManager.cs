@@ -118,6 +118,11 @@ public class PrototypeGameManager : MonoBehaviour
             return "The hallway remembers things wrong. Fix them.";
         }
 
+        if (sceneName == "DreamWheatField")
+        {
+            return "A field at night. Poles. The house, far away and dark.";
+        }
+
         if (HasFinishedFirstDream())
         {
             return "You wake up. Something new is in the room.";
@@ -196,6 +201,10 @@ public class PrototypeGameManager : MonoBehaviour
         else if (sceneName == dreamSceneName)
         {
             GUI.Label(new Rect(20, 20, 520, 35), "Dream: interact with the one wrong thing in each part of the hallway.", labelStyle);
+        }
+        else if (sceneName == "DreamWheatField")
+        {
+            GUI.Label(new Rect(20, 20, 560, 35), "Dream: read the fuse box, then switch the poles on in the right order.", labelStyle);
         }
 
         if (messageTimer > 0f)

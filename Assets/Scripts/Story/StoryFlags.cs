@@ -16,6 +16,9 @@ public static class StoryFlags
     public const string BathroomMirrorCovered = "BathroomMirrorCovered";
     public const string HouseClocksImpossibleTime = "HouseClocksImpossibleTime";
 
+    // Wheat field dream.
+    public const string WheatFieldPowerRestored = "WheatFieldPowerRestored";
+
     // Day 2 morning-after tasks.
     public const string HeardNewMessage = "HeardNewMessage";
     public const string SawChangedPhoto = "SawChangedPhoto";
