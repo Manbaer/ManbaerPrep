@@ -128,3 +128,51 @@
   - Opening the strange dream door still returned to the house and showed the dream-change object.
 - Validated HousePrototype; no scene issues were reported.
 - Checked the Unity console after the fix; no errors or warnings were reported.
+
+2026-07-08 Design Documentation Organization
+
+- Organized the pasted game design notes into Obsidian markdown files in Horror Game/HorrorGame.
+- Created:
+  - Horror Game/HorrorGame/GameDesign/Core_Premise.md
+  - Horror Game/HorrorGame/GameDesign/Dream_Environments.md
+  - Horror Game/HorrorGame/GameDesign/Real_World_Consequences.md
+  - Horror Game/HorrorGame/GameDesign/Ending_Concepts.md
+  - Horror Game/HorrorGame/GameDesign/Story_Flags.md
+  - Horror Game/HorrorGame/GameDesign/Prototype_Vertical_Slice.md
+  - Horror Game/HorrorGame/GameDesign/Open_Questions.md
+- Updated Horror Game/HorrorGame/00_START_HERE.md into an Obsidian index with wiki links.
+- Documented the core dream-to-house loop, the four planned dream environments, real-world consequences, story flags, the first vertical slice, and ending concepts.
+- Documented that dream actions should rewrite the real house.
+- Documented that the first major dream should be the Endless Bedroom Hallway because it directly connects to the player's bedroom and sleep loop.
+- Documented the suggested dream order:
+  - Endless Bedroom Hallway
+  - Infinite Wheat Field
+  - Hospital Dream
+  - Infinite Gas Station
+- Documented that the ending should center on the front door as the final symbol of real change.
+- Documented that main ending choices should be made through player movement:
+  - Leave the house.
+  - Stay inside.
+  - Go back to sleep.
+- Noted open decisions about the player's past, the house's true nature, the final room layout, first post-dream clues, closet contents, and secret ending conditions.
+- No Unity code was written and Assets was not edited.
+
+2026-07-08 Progress Log Cleanup
+
+- Merged the duplicate DevLog progress notes into this main Progress.md file.
+- Removed Horror Game/HorrorGame/DevLog/Progress.md so there is only one progress log.
+
+2026-07-08 Current_Tasks Roadmap
+
+- Created Horror Game/HorrorGame/Current_Tasks.md.
+- Added a milestone roadmap that develops the game in reasonable chunks from the current prototype to a complete release candidate.
+- Organized future work around the first hallway vertical slice, house consequences, wheat field dream, hospital dream, gas station dream, final combined-house act, endings, polish, QA, and release preparation.
+- Linked Current_Tasks from 00_START_HERE.md.
+- No Unity code was written and Assets was not edited.
+
+2026-07-08 AGENTS.md Path Update
+
+- Updated AGENTS.md to point future work at the real Obsidian notes folder: Horror Game/HorrorGame.
+- Added the new GameDesign files and Current_Tasks.md to the recommended reading list.
+- Clarified that future work should follow one current task chunk at a time, then verify and log progress.
+- No Unity code was written and Assets was not edited.

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "unityMCP": {
+      "command": "C:\\Program Files\\Python39\\Scripts\\uvx.exe",
+      "args": [
+        "--offline",
+        "--from",
+        "mcpforunityserver==10.0.0",
+        "mcp-for-unity",
+        "--transport",
+        "stdio"
+      ],
+      "type": "stdio"
+    }
+  }
+}
