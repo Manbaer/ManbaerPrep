@@ -11,6 +11,7 @@ During the day, the player repeats a quiet routine inside the house. At night, t
 - [[Real_World_Consequences]]
 - [[Ending_Concepts]]
 - [[Story_Flags]]
+- [[Narrative_Clues]]
 - [[Prototype_Vertical_Slice]]
 - [[Open_Questions]]
 - [[Current_Tasks]]

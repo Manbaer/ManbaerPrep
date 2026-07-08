@@ -218,6 +218,95 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-08 CurrentTask 13 + 14: Item Consequences And Narrative Clue Pass
+
+- Added seven item consequences to the house, driven by GasStationDreamComplete and the individual
+  item flags through WorldStateApplier (now 26 changes):
+  - A Gas N Go receipt on the kitchen counter: "MILK. BATTERIES. ONE BUS TICKET. Items not purchased: goodbye."
+  - The fridge is restocked with gas station food ("a slush cup still slowly spinning").
+  - The TV remote appears on the couch and works - only if the dream batteries were bought (TVRemoteWorks).
+  - The VHS tape appears beside the TV (VHSCanBePlayed). The VCR exists from day 1 ("blinks 12:00. There is no tape.").
+  - Playing the tape is the major story clue: the living room filmed from the doorway,
+    a small voice asking if you are asleep, then the VCR ejects the tape by itself (WatchedVHSTape).
+  - An impossible floor plan appears on the wall - only if the dream map was taken - showing
+    a second bedroom that does not exist, with a small bed drawn in it.
+  - The kitchen drawer opens with the dream key: a bus ticket dated six years ago, never used.
+  - The front door swaps to a version that opens an inch onto rain, an empty road, and neon,
+    then pulls itself shut (ImpossibleRoadDoorEnabled, SawImpossibleRoad).
+- Day 5 tasks: read the receipt, play the VHS, open the drawer, try the front door.
+  The remote and map are optional bonuses (they may not exist if skipped in the dream - no softlock).
+  After the tasks: "You lie down. For the first time in years, the house does not want you to sleep."
+- Narrative clue pass (CurrentTask 14):
+  - Created Horror Game/HorrorGame/GameDesign/Narrative_Clues.md - the story bible for all in-game text.
+  - Defined the two intended readings (caretaker vs patient) and the rules that keep both alive
+    (no names, no stated death, only "six years", the other person stays evidence-sized).
+  - Inventoried every clue: three answering machine eras, the kitchen paper trail, five photos,
+    screens and machines, doors and rooms, and the hospital ward text, each with what it implies.
+  - Answered the five open story questions ambiguously and described the emotional setup for the final act.
+  - Consistency checklist passes: "six years" everywhere, the errand list echoes, goodnight/Moon ties,
+    the child never described directly, no contradictions.
+  - Linked Narrative_Clues from 00_START_HERE.
+- Fixed a bug where gas station items could fail to be picked up: GasStationItem now hooks its
+  listener in Awake and resolves the manager lazily (logged in Bugs.md).
+- Verified in Play Mode: all seven consequences active after the gas station, all Day 5 flags set,
+  bed gating works, VCR refuses without a tape, empty/decoy checkouts still fail cleanly.
+- Validated scenes; no issues. Checked the Unity console; no errors or warnings.
+
+2026-07-08 CurrentTask 11 + 12: Gas Station Dream And Item Puzzle
+
+- Built Assets/Scenes/DreamGasStation.unity, the fourth dream (added to Build Settings):
+  - Night exterior: empty road with faded dashes, two red gas pumps under a canopy, buzzing
+    "GAS 24H" neon with red glow, flickering doorway light, heavy dark-blue fog.
+  - Interior: fluorescent store with three aisles. Front signs are normal (SNACKS/SODA, MOTOR OIL/MAPS,
+    MAGAZINES/BATTERIES); deeper signs turn wrong in red (MILK/MISSING, MAPS OF YOUR STREET, VHS/MEMORIES).
+  - Freezer bank that reflects "a different store", magazine rack where every cover is the player's house,
+    payphone with a dial tone "that sounds like slow breathing", cashier counter with an old register.
+- Item puzzle (CurrentTask 12), receipt-variant:
+  - Register display: "TOTAL: 3 MEMORIES." A receipt by the register reads:
+    1 THING TO REMEMBER. 1 THING TO WATCH. 1 THING TO OPEN.
+  - Correct memories: the old photo of the house (remember), the unmarked VHS tape (watch),
+    the house key on a hook labeled YOURS (open).
+  - Other collectibles connect to house problems or are decoys: AA batteries ("the TV remote at home
+    has been dead for years"), a road map of only your street, canned soup, a smiling milk carton.
+  - Checking out without three memories gives a clear response: "TOTAL - 3 MEMORIES. YOU HAVE N."
+  - Success: the register opens, a receipt prints "SOLD TO: the house at the end of your street. Come home.",
+    GasStationDreamComplete is set, and a door frame appears standing on the empty road, labeled HOME.
+- Item pickups set the flags CurrentTask 13 will need: DreamBatteriesCollected, DreamVHSCollected,
+  DreamKeyCollected, DreamMapCollected, DreamPhotoCollected.
+- New beginner-friendly scripts in Assets/Scripts/Dream:
+  - GasStationItem.cs (pickup + optional collect flag)
+  - GasStationPuzzleManager.cs (memory counting, checkout, reveal)
+- Day system: Day 4 sleep now loads DreamGasStation; GasStationDreamComplete starts Day 5 (stub plan
+  until CurrentTask 13). PrototypeGameManager got gas station start text and a HUD hint.
+- Rain is a noted placeholder; mood currently comes from darkness, fog, and neon.
+- Verified in Play Mode (full run Day 1 through Day 5):
+  - The road door starts hidden; empty and decoy checkouts fail with the counter message.
+  - Collecting photo + VHS + key and checking out completes the dream, prints the receipt, reveals the door.
+  - The HOME door returns to the house and Day 5 begins; the bed shows the cannot-sleep message.
+- Validated the scene; no issues. Checked the Unity console; no errors or warnings.
+
+2026-07-08 CurrentTask 10: Medical Memory Consequences
+
+- Added five house changes driven by HospitalDreamComplete through WorldStateApplier (now 19 changes total):
+  - A medical document appears on the kitchen table:
+    "PATIENT: J. DOE. DIAGNOSIS: illegible. CARE TRANSFERRED TO: HOME. The signature is yours." (HouseMedicalMemoryUnlocked)
+  - The answering machine swaps to a clinic message:
+    "Your prescription is ready for pickup. It has been ready for six years." (ClinicMessageUnlocked)
+  - The bathroom cabinet swaps from empty ("A clean ring where something round once stood.")
+    to rows of full, same-named medication bottles.
+  - The bedroom turns clinical: a hospital privacy curtain appears beside the bed and the warm
+    bedroom light is replaced with a cold white-green one (BedroomChangedToSickRoom).
+  - The bedroom dresser drawer unlocks (MedicalDrawerUnlocked). It exists from day 1 as "Stuck. Or locked."
+    Story clue inside: "a child-sized hospital bracelet, and a photo of two beds in one room."
+- Clues imply caretaking/illness backstory without stating it; nothing is explained outright.
+- Day 4 now has real tasks: read the document, hear the clinic message, check the cabinet, open the drawer.
+  The bed then shows the cannot-sleep message until the gas station dream exists (CurrentTask 11/12).
+- Verified in Play Mode (full run Day 1 through Day 4):
+  - Pre-hospital: document hidden, clinic message absent, cabinet empty, warm light, drawer stuck.
+  - Post-hospital: all five changes active, all four consequence flags set.
+  - Bed refuses before the four Day 4 tasks and stalls gently after them.
+- Validated the scene; no issues. Checked the Unity console; no errors or warnings.
+
 2026-07-08 CurrentTask 08 + 09: Hospital Dream And Patient File Puzzle
 
 - Built Assets/Scenes/DreamHospital.unity, the third dream (added to Build Settings):

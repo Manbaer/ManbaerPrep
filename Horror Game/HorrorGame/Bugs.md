@@ -10,6 +10,9 @@ When playing the scene, here are the bugs I noticed:
   - WorldStateApplier now turns renderers and colliders back on when enabling consequence objects.
   - WorldStateApplier also reapplies changes when its scene finishes loading.
 
+- Fixed: Gas station items could sometimes not be picked up (their pickup hook was added in Start, which the editor occasionally skipped after a scene load hiccup).
+  - GasStationItem now hooks its pickup listener in Awake and finds the puzzle manager at pickup time, so load order never matters.
+
 - Fixed: The wrong lamp in the dream hallway kept flickering after the player fixed it.
   - Fixing the lamp now stops the flicker and turns the light off.
   - Resetting the hallway brings the flicker back.

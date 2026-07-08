@@ -128,6 +128,11 @@ public class PrototypeGameManager : MonoBehaviour
             return "A hospital ward. The intercom says a patient is missing.";
         }
 
+        if (sceneName == "DreamGasStation")
+        {
+            return "A gas station at night. The register does not want money.";
+        }
+
         if (HasFinishedFirstDream())
         {
             return "You wake up. Something new is in the room.";
@@ -214,6 +219,10 @@ public class PrototypeGameManager : MonoBehaviour
         else if (sceneName == "DreamHospital")
         {
             GUI.Label(new Rect(20, 20, 560, 35), "Dream: find out who is missing from the ward, and where they sleep.", labelStyle);
+        }
+        else if (sceneName == "DreamGasStation")
+        {
+            GUI.Label(new Rect(20, 20, 560, 35), "Dream: read the receipt by the register, then bring it what it wants.", labelStyle);
         }
 
         if (messageTimer > 0f)

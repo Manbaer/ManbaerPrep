@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTasks 01 through 09 are done. CurrentTask 10 (medical memory consequences) is the recommended next task.
+CurrentTasks 01 through 14 are done. CurrentTask 15 (the house after sleep / final act) is the recommended next task.
 
 The project already has:
 
@@ -365,7 +365,7 @@ Done when:
 
 ## CurrentTask 10: Add Medical Memory Consequences
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]].
 
 Design source:
 
@@ -399,7 +399,7 @@ Done when:
 
 ## CurrentTask 11: Build Gas Station Dream Blockout
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 12). Verified in Play Mode; see [[Progress]]. Rain is not implemented yet (mood comes from darkness, fog, and neon); add rain during the polish pass.
 
 Design source:
 
@@ -433,7 +433,7 @@ Done when:
 
 ## CurrentTask 12: Add Gas Station Item Puzzle
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 11). Receipt-puzzle style chosen (remember/watch/open). Verified in Play Mode; see [[Progress]].
 
 Design source:
 
@@ -471,7 +471,7 @@ Done when:
 
 ## CurrentTask 13: Add Item Consequences In The House
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. The TV remote and impossible map only appear if the player bought the batteries/map in the dream; they are optional bonuses, not required Day 5 tasks (avoids a softlock).
 
 Design source:
 
@@ -512,7 +512,7 @@ Done when:
 
 ## CurrentTask 14: Narrative Clue Pass
 
-Status: Not started
+Status: Done (2026-07-08). All in-game text written and documented in [[Narrative_Clues]], including the two intended story readings, the five open questions, and a consistency checklist.
 
 Design source:
 
