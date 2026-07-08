@@ -218,6 +218,30 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-08 CurrentTask 07: Power Consequences In The House
+
+- Built a fuse room behind the previously locked basement door (east side of the house):
+  - Dark room with a shelf and a big fuse box.
+  - A bare-bulb light that only works after the wheat field dream (LockedBasementLightEnabled).
+  - Fuse box message: "Every fuse is brand new. Someone replaced them while you slept." (sets CheckedFuseBox).
+- Wired six power consequences into WorldStateApplier, driven by WheatFieldPowerRestored:
+  - Fuse room light turns on (LockedBasementLightEnabled).
+  - Basement door unlocks (FuseRoomUnlocked) - the new area to enter.
+  - TV shows static while switched off via a static overlay (TVCanTurnOnByItself).
+  - Kitchen gains a flickering light using SimpleLightFlicker (HousePowerChanged).
+  - Two wall junction boxes appear where the walls buzz - kitchen and hallway (WallBuzzingEnabled).
+  - The dead radio in the living room is replaced by one receiving strange audio (RadioStrangeAudioUnlocked).
+- The radio exists from day 1 as "Radio Dead" ("Dead air. It has been dead for years.") so the change is noticeable.
+- Day 3 now has real explore tasks before rest:
+  - Look at the TV static, listen to the radio, listen to the buzzing wall, check the fuse room.
+  - Bed message afterward: "You lie down, but sleep will not come. Not yet." (until the hospital dream exists).
+- Wall buzzing and radio audio are text placeholders for now; real audio comes in the polish pass.
+- Verified in Play Mode (full run Day 1 -> hallway -> Day 2 -> wheat field -> Day 3):
+  - Pre-power: radio dead, no static, no flicker, fuse room dark, basement door refuses to open.
+  - Post-power: all six consequences active, all six story flags set, basement door opens.
+  - All four Day 3 tasks set their flags; the bed then shows the cannot-sleep message.
+- Validated the scene; no issues. Checked the Unity console; no errors or warnings.
+
 2026-07-08 CurrentTask 05 + 06: Wheat Field Dream And Circuit Puzzle
 
 - Built Assets/Scenes/DreamWheatField.unity, the second dream (added to Build Settings):

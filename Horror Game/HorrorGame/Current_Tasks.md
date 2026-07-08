@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTasks 01 through 06 are done. CurrentTask 07 (power consequences in the house) is the recommended next task.
+CurrentTasks 01 through 07 are done. CurrentTask 08 (hospital dream blockout) is the recommended next task.
 
 The project already has:
 
@@ -263,7 +263,7 @@ Done when:
 
 ## CurrentTask 07: Add Power Consequences In The House
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Wall buzzing and radio audio are text placeholders until the audio/polish pass.
 
 Design source:
 

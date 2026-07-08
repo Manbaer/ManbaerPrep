@@ -19,6 +19,19 @@ public static class StoryFlags
     // Wheat field dream.
     public const string WheatFieldPowerRestored = "WheatFieldPowerRestored";
 
+    // Power consequences in the house after the wheat field.
+    public const string HousePowerChanged = "HousePowerChanged";
+    public const string TVCanTurnOnByItself = "TVCanTurnOnByItself";
+    public const string LockedBasementLightEnabled = "LockedBasementLightEnabled";
+    public const string WallBuzzingEnabled = "WallBuzzingEnabled";
+    public const string RadioStrangeAudioUnlocked = "RadioStrangeAudioUnlocked";
+
+    // Day 3 morning-after tasks.
+    public const string CheckedFuseBox = "CheckedFuseBox";
+    public const string SawTVStatic = "SawTVStatic";
+    public const string FeltWallBuzzing = "FeltWallBuzzing";
+    public const string ListenedToRadio = "ListenedToRadio";
+
     // Day 2 morning-after tasks.
     public const string HeardNewMessage = "HeardNewMessage";
     public const string SawChangedPhoto = "SawChangedPhoto";
