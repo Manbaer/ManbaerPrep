@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 211557540}
   - component: {fileID: 211557539}
   - component: {fileID: 211557538}
+  - component: {fileID: 211557543}
   m_Layer: 0
   m_Name: Turn Off Kitchen Light
   m_TagString: Untagged
@@ -675,6 +676,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211557543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211557537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cf8be735efc5044b9693ee688ceb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  interactionPrompt: Press E to turn off the kitchen light
+  requiredStoryFlags: []
+  missingRequirementMessage: You are not ready to do that yet.
+  callLegacyWhenRequirementsMissing: 0
+  setStoryFlag: 1
+  storyFlagToSet: KitchenLightOff
+  completeCurrentObjective: 0
+  setNewObjective: 0
+  newObjectiveText: 
+  loadSceneAfterInteraction: 0
+  sceneToLoad: 
+  debugMessage: 
+  onlyUseOnce: 0
+  callLegacyInteractionTarget: 1
+  onInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &317879236
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +909,7 @@ GameObject:
   - component: {fileID: 354941573}
   - component: {fileID: 354941572}
   - component: {fileID: 354941571}
+  - component: {fileID: 354941576}
   m_Layer: 0
   m_Name: Use Bed
   m_TagString: Untagged
@@ -994,6 +1025,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &354941576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354941570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cf8be735efc5044b9693ee688ceb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  interactionPrompt: Press E to sleep
+  requiredStoryFlags:
+  - WatchedTV
+  - CheckedAnsweringMachine
+  - KitchenLightOff
+  missingRequirementMessage: You should finish the house tasks before sleeping.
+  callLegacyWhenRequirementsMissing: 1
+  setStoryFlag: 1
+  storyFlagToSet: WentToBed
+  completeCurrentObjective: 0
+  setNewObjective: 1
+  newObjectiveText: Enter the dream
+  loadSceneAfterInteraction: 1
+  sceneToLoad: DreamHallway
+  debugMessage: Bed interaction used through modular InteractableObject.
+  onlyUseOnce: 0
+  callLegacyInteractionTarget: 0
+  onInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &362904315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 362904317}
   - component: {fileID: 362904316}
+  - component: {fileID: 362904318}
   m_Layer: 0
   m_Name: Kitchen Light Source
   m_TagString: Untagged
@@ -1091,6 +1155,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &362904318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362904315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &399177929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1837,7 @@ GameObject:
   - component: {fileID: 536230529}
   - component: {fileID: 536230528}
   - component: {fileID: 536230527}
+  - component: {fileID: 536230532}
   m_Layer: 0
   m_Name: Check Answering Machine
   m_TagString: Untagged
@@ -1859,6 +1953,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536230532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536230526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cf8be735efc5044b9693ee688ceb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  interactionPrompt: Press E to check the answering machine
+  requiredStoryFlags: []
+  missingRequirementMessage: You are not ready to do that yet.
+  callLegacyWhenRequirementsMissing: 0
+  setStoryFlag: 1
+  storyFlagToSet: CheckedAnsweringMachine
+  completeCurrentObjective: 0
+  setNewObjective: 0
+  newObjectiveText: 
+  loadSceneAfterInteraction: 0
+  sceneToLoad: 
+  debugMessage: 
+  onlyUseOnce: 0
+  callLegacyInteractionTarget: 1
+  onInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &574972737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,6 +2139,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647560347}
   m_CullTransparentMesh: 1
+--- !u!1 &665712289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665712291}
+  - component: {fileID: 665712290}
+  m_Layer: 0
+  m_Name: Game Systems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &665712290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665712289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32454ab09629d74181eeaad87e8bda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  currentChapter: 1
+  currentObjectiveText: 
+--- !u!4 &665712291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665712289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711900953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,6 +2198,7 @@ GameObject:
   - component: {fileID: 711900956}
   - component: {fileID: 711900955}
   - component: {fileID: 711900954}
+  - component: {fileID: 711900959}
   m_Layer: 0
   m_Name: Check TV
   m_TagString: Untagged
@@ -2145,6 +2315,35 @@ Transform:
   - {fileID: 82138593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &711900959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711900953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cf8be735efc5044b9693ee688ceb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  interactionPrompt: Press E to check the TV
+  requiredStoryFlags: []
+  missingRequirementMessage: You are not ready to do that yet.
+  callLegacyWhenRequirementsMissing: 0
+  setStoryFlag: 1
+  storyFlagToSet: WatchedTV
+  completeCurrentObjective: 0
+  setNewObjective: 0
+  newObjectiveText: 
+  loadSceneAfterInteraction: 0
+  sceneToLoad: 
+  debugMessage: 
+  onlyUseOnce: 0
+  callLegacyInteractionTarget: 1
+  onInteracted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &862546090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,6 +2452,61 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2, y: 0.55, z: 3.55}
   m_LocalScale: {x: 2.8, y: 0.7, z: 0.55}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &879145102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879145104}
+  - component: {fileID: 879145103}
+  m_Layer: 0
+  m_Name: World State Applier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &879145103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879145102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929d4514b646c34498a51920ac1af955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldStateApplier
+  changes:
+  - requiredFlag: DreamOneComplete
+    objectsToEnable:
+    - {fileID: 1159477384}
+    objectsToDisable: []
+    lightsToChange:
+    - {fileID: 362904316}
+    changeLights: 1
+    lightColor: {r: 0.55, g: 0.65, b: 1, a: 1}
+    lightIntensity: 1.2
+    flagToSetAfterApplying: HouseChangedAfterDreamOne
+--- !u!4 &879145104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879145102}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2674,6 +2928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120311891}
   - component: {fileID: 1120311890}
+  - component: {fileID: 1120311892}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2761,6 +3016,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1120311892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120311889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1159477384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,7 +3063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1159477385
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4470,7 +4754,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4847,3 +5131,5 @@ SceneRoots:
   - {fileID: 1712404506}
   - {fileID: 1251460250}
   - {fileID: 1590706306}
+  - {fileID: 665712291}
+  - {fileID: 879145104}

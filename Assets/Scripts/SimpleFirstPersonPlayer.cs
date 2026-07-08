@@ -93,6 +93,14 @@ public class SimpleFirstPersonPlayer : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
+            InteractableObject interactable = hit.collider.GetComponentInParent<InteractableObject>();
+
+            if (interactable != null)
+            {
+                interactable.Interact();
+                return;
+            }
+
             InteractionTarget target = hit.collider.GetComponentInParent<InteractionTarget>();
 
             if (target != null)
@@ -116,6 +124,14 @@ public class SimpleFirstPersonPlayer : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
+            InteractableObject interactable = hit.collider.GetComponentInParent<InteractableObject>();
+
+            if (interactable != null)
+            {
+                currentPrompt = interactable.GetPrompt();
+                return;
+            }
+
             InteractionTarget target = hit.collider.GetComponentInParent<InteractionTarget>();
 
             if (target != null)

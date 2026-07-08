@@ -59,3 +59,72 @@
   - Play loads HousePrototype.
   - Pause, Settings, Back, Resume, and Exit to Main Menu work.
 - Checked the Unity console; no errors or warnings were reported.
+
+2026-07-07 Modular Structure Verification
+
+- Confirmed the modular scripts exist under Assets/Scripts:
+  - Core/GameManager.cs
+  - Story/StoryFlagManager.cs
+  - Story/StoryFlags.cs
+  - Story/ObjectiveManager.cs
+  - Story/WorldStateApplier.cs
+  - Interaction/InteractableObject.cs
+  - Player/PlayerInteraction.cs
+  - SceneManagement/SceneLoader.cs
+  - UI/SceneSelectorMenu.cs
+- Validated the modular scripts in Unity; no script errors were reported.
+- Verified MainMenu, HousePrototype, and DreamHallway scene validation; all were clean.
+- Confirmed the scenes are wired with the modular system:
+  - MainMenu has GameManager and SceneSelectorMenu.
+  - HousePrototype has GameManager, four InteractableObject components, and WorldStateApplier.
+  - DreamHallway has GameManager and one InteractableObject on the strange door.
+- Wired the bed InteractableObject to set WentToBed, update the objective, and load DreamHallway through SceneLoader.
+- Ran the requested Play Mode flow:
+  - Started from MainMenu.
+  - Loaded HousePrototype.
+  - Interacted with the TV.
+  - Confirmed WatchedTV was set.
+  - Confirmed the objective advanced to Eat dinner.
+  - Interacted with the bed.
+  - Confirmed WentToBed was set.
+  - Confirmed the objective updated to Enter the dream.
+  - Confirmed DreamHallway loaded.
+  - Interacted with the strange dream door.
+  - Confirmed DreamOneComplete was set.
+  - Confirmed the game returned to HousePrototype.
+  - Confirmed WorldStateApplier activated the dream-change object in the house.
+  - Confirmed HouseChangedAfterDreamOne was set.
+- Tested the developer SceneSelectorMenu:
+  - Confirmed it lists MainMenu, HousePrototype, and DreamHallway.
+  - Confirmed it can load DreamHallway by index.
+- Checked the Unity console after verification; no errors or warnings were reported.
+
+2026-07-07 Dream Consequence Visibility Fix
+
+- Fixed a regression where the dream-change object in the house became active after the dream door but stayed invisible.
+- Updated WorldStateApplier so enabled consequence objects also enable their child renderers and colliders.
+- Updated WorldStateApplier to reapply scene changes when its scene loads.
+- Re-tested the flow in Play Mode:
+  - MainMenu loaded HousePrototype.
+  - House interactions loaded DreamHallway.
+  - The strange door set DreamOneComplete.
+  - Returning to HousePrototype set HouseChangedAfterDreamOne.
+  - Dream Change Object was active with all renderers and colliders enabled.
+- Checked the Unity console after the fix; no errors or warnings were reported.
+
+2026-07-08 Bed Task Requirement Fix
+
+- Fixed a bug where the player could use the bed immediately without finishing the house tasks.
+- Added simple required story flags to InteractableObject.
+- Kept the old on-screen "not ready" warning for blocked bed use.
+- Wired the bed to require:
+  - WatchedTV
+  - CheckedAnsweringMachine
+  - KitchenLightOff
+- Re-tested the flow in Play Mode:
+  - Starting from MainMenu loaded HousePrototype.
+  - Using the bed immediately kept the player in HousePrototype and did not set WentToBed.
+  - Completing the TV, answering machine, and kitchen light tasks allowed the bed to set WentToBed and load DreamHallway.
+  - Opening the strange dream door still returned to the house and showed the dream-change object.
+- Validated HousePrototype; no scene issues were reported.
+- Checked the Unity console after the fix; no errors or warnings were reported.

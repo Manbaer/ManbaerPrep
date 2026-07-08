@@ -19,6 +19,8 @@ public class PrototypeGameManager : MonoBehaviour
 
     void Awake()
     {
+        GameManager.EnsureExists();
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -51,16 +53,22 @@ public class PrototypeGameManager : MonoBehaviour
         if (target.kind == InteractionKind.TV)
         {
             checkedTV = true;
+            StoryFlagManager.EnsureExists().SetFlag(StoryFlags.WatchedTV);
+            ObjectiveManager.EnsureExists().CompleteCurrentObjective();
             ShowMessage("The TV shows static. A laugh track plays under the snow.");
         }
         else if (target.kind == InteractionKind.AnsweringMachine)
         {
             checkedAnsweringMachine = true;
+            StoryFlagManager.EnsureExists().SetFlag("CheckedAnsweringMachine");
+            ObjectiveManager.EnsureExists().SetObjective("Turn off the kitchen light");
             ShowMessage("One old message: 'Are you still there?'");
         }
         else if (target.kind == InteractionKind.KitchenLight)
         {
             turnedOffKitchenLight = true;
+            StoryFlagManager.EnsureExists().SetFlag("KitchenLightOff");
+            ObjectiveManager.EnsureExists().SetObjective("Go to bed");
 
             if (target.lightToTurnOff != null)
             {
@@ -76,6 +84,8 @@ public class PrototypeGameManager : MonoBehaviour
         else if (target.kind == InteractionKind.DreamDoor)
         {
             strangeDoorOpened = true;
+            StoryFlagManager.EnsureExists().SetFlag(StoryFlags.DreamOneComplete);
+            ObjectiveManager.EnsureExists().SetObjective("Wake up and check the house");
             ShowMessage("The strange door opens onto your bedroom.");
             SceneManager.LoadScene(houseSceneName);
         }
@@ -90,6 +100,8 @@ public class PrototypeGameManager : MonoBehaviour
         }
 
         ShowMessage("You lie down. The house stretches into a hallway.");
+        StoryFlagManager.EnsureExists().SetFlag(StoryFlags.WentToBed);
+        ObjectiveManager.EnsureExists().SetObjective("Enter the dream");
         SceneManager.LoadScene(dreamSceneName);
     }
 
@@ -106,7 +118,7 @@ public class PrototypeGameManager : MonoBehaviour
             return "Dream hallway. Find the strange door.";
         }
 
-        if (strangeDoorOpened)
+        if (strangeDoorOpened || StoryFlagManager.EnsureExists().HasFlag(StoryFlags.DreamOneComplete))
         {
             return "You wake up. Something new is in the room.";
         }
@@ -135,17 +147,18 @@ public class PrototypeGameManager : MonoBehaviour
             return;
         }
 
-        Renderer[] renderers = changedObject.GetComponentsInChildren<Renderer>();
-        Collider[] colliders = changedObject.GetComponentsInChildren<Collider>();
+        bool shouldShowDreamChange = strangeDoorOpened || StoryFlagManager.EnsureExists().HasFlag(StoryFlags.DreamOneComplete);
+        Renderer[] renderers = changedObject.GetComponentsInChildren<Renderer>(true);
+        Collider[] colliders = changedObject.GetComponentsInChildren<Collider>(true);
 
         foreach (Renderer item in renderers)
         {
-            item.enabled = strangeDoorOpened;
+            item.enabled = shouldShowDreamChange;
         }
 
         foreach (Collider item in colliders)
         {
-            item.enabled = strangeDoorOpened;
+            item.enabled = shouldShowDreamChange;
         }
     }
 
