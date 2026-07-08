@@ -218,6 +218,32 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-08 CurrentTask 08 + 09: Hospital Dream And Patient File Puzzle
+
+- Built Assets/Scenes/DreamHospital.unity, the third dream (added to Build Settings):
+  - Long, dim, foggy 1990s hospital corridor with sickly green lighting and one flickering ward light.
+  - Patient rooms 201-204, each holding one object from the house:
+    201 the TV, 202 the kitchen table, 203 a childhood photo with the face worn away, 204 the player's own bed.
+  - Abandoned nurse station alcove with desk, wristband, four patient charts, and a locked medicine cabinet.
+  - Two intercoms: "PATIENT MISSING FROM ROOM 204." and "THE PATIENT IS WHERE THEY SLEEP."
+  - Locked ward exit at the far end.
+- The patient file puzzle (CurrentTask 09) is a flag-gated chain built entirely from InteractableObject requirements - no new scripts needed:
+  1. Read the wristband: "J. DOE. ROOM - WHERE THEY SLEEP." (FoundWristband)
+  2. Take chart 204 ("DOES NOT WAKE. The handwriting is yours.") - locked until the wristband (PatientFileFound). Wrong charts give flavor text only.
+  3. Open the medicine cabinet - locked until the file ("OPEN WITH PATIENT FILE") - take the bottle labeled FOR SLEEP (HospitalMedicineTaken).
+  4. Use the heart monitor beside the bed in room 204 - the flat line lifts (HospitalDreamComplete).
+- Completion wakes the ward: bright hallway lights turn on and a discharge paper appears
+  ("DISCHARGE - J. DOE. Condition: AWAKE."), via a scene WorldStateApplier triggered by the monitor's onInteracted event.
+- The ward exit stays locked ("Somewhere in the ward, a monitor is flat.") until complete, then returns to the house.
+- The puzzle objective framing stays safe: the goal is finding and waking the missing patient, never self-harm.
+- Day system: Day 3 sleep now loads DreamHospital; HospitalDreamComplete advances to Day 4 (stub plan until CurrentTask 10).
+- PrototypeGameManager got hospital start text and a HUD hint line.
+- Verified in Play Mode (full run Day 1 -> hallway -> Day 2 -> wheat field -> Day 3 -> hospital):
+  - Exit, monitor, cabinet, and chart 204 all refuse out of order with clear messages.
+  - The correct chain sets all four flags; lights and discharge paper appear only after the monitor.
+  - The exit returns home and Day 4 begins; the bed shows the cannot-sleep message.
+- Validated the scene; no issues. Checked the Unity console; no errors or warnings.
+
 2026-07-08 CurrentTask 07: Power Consequences In The House
 
 - Built a fuse room behind the previously locked basement door (east side of the house):

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HorrorGame/00_START_HERE.md",
+                "file": "HorrorGame/Progress.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00_START_HERE"
+              "title": "Progress"
             }
           },
           {
@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HorrorGame/Progress.md",
+                "file": "HorrorGame/Bugs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Progress"
+              "title": "Bugs"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,34 +197,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "2f8a751280942404",
+  "active": "d9048d78b55e0ff9",
   "lastOpenFiles": [
     "HorrorGame/Current_Tasks.md",
+    "HorrorGame/Progress.md.tmp.19300.dd4d36e81122",
+    "HorrorGame/Current_Tasks.md.tmp.19300.269e6d2e889e",
+    "HorrorGame/Current_Tasks.md.tmp.19300.fb123ca7f98b",
+    "HorrorGame/Current_Tasks.md.tmp.19300.e36ebfce82f9",
+    "HorrorGame/GameDesign/Dream_Environments.md",
+    "HorrorGame/GameDesign/Core_Premise.md",
+    "HorrorGame/00_START_HERE.md",
+    "HorrorGame/Bugs.md",
+    "HorrorGame/Progress.md",
+    "HorrorGame/GameDesign/Story_Flags.md",
+    "Workflow.png",
     "HorrorGame/Progress.md.tmp.23008.202e11c6f0b2",
     "HorrorGame/Current_Tasks.md.tmp.23008.55bfa1bf06ae",
     "HorrorGame/Current_Tasks.md.tmp.23008.29d6dc9bf806",
-    "HorrorGame/Progress.md",
     "HorrorGame/Progress.md.tmp.4324.54fab926b91a",
     "HorrorGame/Current_Tasks.md.tmp.4324.9a67a43619f8",
     "HorrorGame/Current_Tasks.md.tmp.4324.af056be9f97f",
-    "HorrorGame/Current_Tasks.md.tmp.4324.259f76a44d6a",
-    "HorrorGame/Progress.md.tmp.14596.f06e075e12b3",
-    "HorrorGame/Current_Tasks.md.tmp.14596.1ba7302a92c3",
-    "HorrorGame/Current_Tasks.md.tmp.14596.15b1f28449b8",
     "HorrorGame/GameDesign/Ending_Concepts.md",
     "HorrorGame/GameDesign/Prototype_Vertical_Slice.md",
-    "HorrorGame/Bugs.md",
-    "HorrorGame/GameDesign/Story_Flags.md",
     "HorrorGame/GameDesign/Real_World_Consequences.md",
     "HorrorGame/GameDesign/Open_Questions.md",
-    "HorrorGame/00_START_HERE.md",
     "HorrorGame/GameDesign.md",
     "HorrorGame/Current_Task.md",
-    "HorrorGame/GameDesign/Core_Premise.md",
-    "HorrorGame/GameDesign/Dream_Environments.md",
     "HorrorGame/DevLog/Progress.md",
     "HorrorGame/Task_History.md",
-    "Workflow.png",
     "Workflow.md",
     "Welcome.md"
   ]

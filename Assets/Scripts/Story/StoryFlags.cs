@@ -26,6 +26,12 @@ public static class StoryFlags
     public const string WallBuzzingEnabled = "WallBuzzingEnabled";
     public const string RadioStrangeAudioUnlocked = "RadioStrangeAudioUnlocked";
 
+    // Hospital dream.
+    public const string FoundWristband = "FoundWristband";
+    public const string PatientFileFound = "PatientFileFound";
+    public const string HospitalMedicineTaken = "HospitalMedicineTaken";
+    public const string HospitalDreamComplete = "HospitalDreamComplete";
+
     // Day 3 morning-after tasks.
     public const string CheckedFuseBox = "CheckedFuseBox";
     public const string SawTVStatic = "SawTVStatic";

@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTasks 01 through 07 are done. CurrentTask 08 (hospital dream blockout) is the recommended next task.
+CurrentTasks 01 through 09 are done. CurrentTask 10 (medical memory consequences) is the recommended next task.
 
 The project already has:
 
@@ -301,7 +301,7 @@ Done when:
 
 ## CurrentTask 08: Build Hospital Dream Blockout
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 09). Verified in Play Mode; see [[Progress]]. The hallway is a long foggy corridor rather than a true loop; revisit during polish if a looping effect is wanted.
 
 Design source:
 
@@ -334,7 +334,7 @@ Done when:
 
 ## CurrentTask 09: Add Hospital Patient File Puzzle
 
-Status: Not started
+Status: Done (2026-07-08, together with CurrentTask 08). Verified in Play Mode; see [[Progress]].
 
 Design source:
 

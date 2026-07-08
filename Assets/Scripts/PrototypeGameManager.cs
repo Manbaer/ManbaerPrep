@@ -123,6 +123,11 @@ public class PrototypeGameManager : MonoBehaviour
             return "A field at night. Poles. The house, far away and dark.";
         }
 
+        if (sceneName == "DreamHospital")
+        {
+            return "A hospital ward. The intercom says a patient is missing.";
+        }
+
         if (HasFinishedFirstDream())
         {
             return "You wake up. Something new is in the room.";
@@ -205,6 +210,10 @@ public class PrototypeGameManager : MonoBehaviour
         else if (sceneName == "DreamWheatField")
         {
             GUI.Label(new Rect(20, 20, 560, 35), "Dream: read the fuse box, then switch the poles on in the right order.", labelStyle);
+        }
+        else if (sceneName == "DreamHospital")
+        {
+            GUI.Label(new Rect(20, 20, 560, 35), "Dream: find out who is missing from the ward, and where they sleep.", labelStyle);
         }
 
         if (messageTimer > 0f)

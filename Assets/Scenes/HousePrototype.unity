@@ -3121,6 +3121,7 @@ MonoBehaviour:
   dreamCompletionFlags:
   - DreamHallwayComplete
   - WheatFieldPowerRestored
+  - HospitalDreamComplete
   days:
   - dayNumber: 1
     dayStartObjective: Finish your evening routine, then sleep.
@@ -3163,6 +3164,13 @@ MonoBehaviour:
     - FeltWallBuzzing
     - CheckedFuseBox
     bedNotReadyMessage: Not yet. The house is louder than before. Look around.
+    dreamSceneToLoad: DreamHospital
+    cannotSleepMessage: 
+  - dayNumber: 4
+    dayStartObjective: Something followed you back from the ward. Look around.
+    taskLabels: []
+    requiredFlagsForSleep: []
+    bedNotReadyMessage: You are not ready to sleep yet.
     dreamSceneToLoad: 
     cannotSleepMessage: You lie down, but sleep will not come. Not yet.
   currentDay: 1
