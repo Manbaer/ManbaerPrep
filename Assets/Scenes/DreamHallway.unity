@@ -14,19 +14,19 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_Fog: 1
+  m_FogColor: {r: 0.05, g: 0.045, b: 0.07, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.09, g: 0.08, b: 0.11, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -573,6 +573,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -620,6 +621,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -709,6 +711,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -756,6 +759,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -800,6 +804,54 @@ Transform:
   - {fileID: 639473705}
   - {fileID: 870559830}
   - {fileID: 80661227}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &49679074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 49679077}
+  - component: {fileID: 49679075}
+  m_Layer: 0
+  m_Name: Ambience
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &49679075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49679074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28c012ebf3a36848a5d2515c8affda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleAmbientHum
+  humFrequency: 55
+  humVolume: 0.12
+  noiseVolume: 0.03
+  volume: 0.3
+--- !u!4 &49679077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49679074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &69131762
@@ -1416,6 +1468,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -1463,6 +1516,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -1568,6 +1622,7 @@ MonoBehaviour:
   newObjectiveText: Wake up and check the house
   loadSceneAfterInteraction: 1
   sceneToLoad: HousePrototype
+  screenMessage: 
   debugMessage: The bedroom door finally opens.
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -3154,6 +3209,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -3201,6 +3257,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -3811,6 +3868,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -3858,6 +3916,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -4083,6 +4142,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -4130,6 +4190,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -4220,6 +4281,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -4267,6 +4329,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -4843,6 +4906,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -4890,6 +4954,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -5069,6 +5134,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -5116,6 +5182,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -5293,6 +5360,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -5340,6 +5408,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -5687,6 +5756,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -5734,6 +5804,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6015,6 +6086,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6062,6 +6134,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6149,6 +6222,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6196,6 +6270,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6407,6 +6482,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6454,6 +6530,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6542,6 +6619,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -6589,6 +6667,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -8812,6 +8891,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -8859,6 +8939,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -9799,6 +9880,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -9846,6 +9928,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -10023,6 +10106,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -10070,6 +10154,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -10361,6 +10446,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -10408,6 +10494,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -12296,6 +12383,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -12343,6 +12431,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -12430,6 +12519,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -12477,6 +12567,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -12564,6 +12655,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -12611,6 +12703,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -14064,8 +14157,8 @@ Camera:
   m_GameObject: {fileID: 1863799645}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.02, g: 0.02, b: 0.04, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -15101,6 +15194,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -15148,6 +15242,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -16550,6 +16645,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -16597,6 +16693,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -16879,6 +16976,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -16926,6 +17024,7 @@ MonoBehaviour:
   newObjectiveText: 
   loadSceneAfterInteraction: 0
   sceneToLoad: 
+  screenMessage: 
   debugMessage: 
   onlyUseOnce: 0
   callLegacyInteractionTarget: 0
@@ -17000,7 +17099,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
-  m_Color: {r: 0.55, g: 0.65, b: 1, a: 1}
+  m_Color: {r: 0.6, g: 0.6, b: 0.85, a: 1}
   m_Intensity: 0.15
   m_Range: 10
   m_SpotAngle: 30
@@ -17161,3 +17260,4 @@ SceneRoots:
   - {fileID: 818011379}
   - {fileID: 1008942517}
   - {fileID: 75139914}
+  - {fileID: 49679077}

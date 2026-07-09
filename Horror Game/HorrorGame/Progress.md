@@ -218,6 +218,34 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-08 CurrentTask 18: Full Game Polish Pass (Blockout Scope)
+
+- Lighting pass:
+  - House: quiet evening look - flat dim warm ambient, weak cool directional, dark camera background,
+    plus a new floor lamp in the living room.
+  - DreamHallway: brought in line with the other dreams - dark ambient, exponential fog, dim blue directional,
+    dark camera background (it predated the mood work and was still bright).
+- Sound and ambience:
+  - New Assets/Scripts/Audio/SimpleAmbientHum.cs generates looping ambience in code (sine hum + filtered noise),
+    so no audio files are needed.
+  - Every scene now has an Ambience object: faint 50Hz room tone (house), low drone (hallway),
+    wind (wheat field), fluorescent buzz (hospital), fridge hum with rain hiss (gas station).
+- Simple 1990s props in the house: rug, coffee table, two kitchen chairs, two hallway picture frames, floor lamp.
+- Consistency pass:
+  - The four day 1 prompts now match the "Press E - Verb" style used everywhere else.
+  - The legacy PrototypeGameManager no longer advances the stale prototype objective list;
+    the DayManager owns all objective text (Bugs.md).
+- Debug/placeholder cleanup:
+  - The old gray "Dream Change Object" placeholder is retired (deactivated, applier entry removed).
+  - The developer scene selector on the main menu is disabled for the final flow.
+- Credits: a simple credits line on the main menu.
+- Save/checkpoint decision: none needed for this scope - one playthrough is a single short sitting,
+  and story flags persist for the whole session (documented in Current_Tasks).
+- Fixed during the pass: editor-scripted AudioSources refused to play; SimpleAmbientHum now creates
+  its own source at runtime (Bugs.md).
+- Verified in Play Mode: ambience plays, prompts and objectives read consistently, day HUD unaffected,
+  no console errors or warnings. All five scenes re-saved.
+
 2026-07-08 CurrentTask 15 + 16 + 17: The House After Sleep And All Four Endings
 
 - The final act runs inside HousePrototype as Day 6. Sleeping on Day 5 sets HouseAfterSleepStarted

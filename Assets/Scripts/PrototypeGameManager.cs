@@ -54,21 +54,19 @@ public class PrototypeGameManager : MonoBehaviour
         {
             checkedTV = true;
             StoryFlagManager.EnsureExists().SetFlag(StoryFlags.WatchedTV);
-            ObjectiveManager.EnsureExists().CompleteCurrentObjective();
+            // The DayManager owns objective text now.
             ShowMessage("The TV shows static. A laugh track plays under the snow.");
         }
         else if (target.kind == InteractionKind.AnsweringMachine)
         {
             checkedAnsweringMachine = true;
             StoryFlagManager.EnsureExists().SetFlag("CheckedAnsweringMachine");
-            ObjectiveManager.EnsureExists().SetObjective("Turn off the kitchen light");
             ShowMessage("One old message: 'Are you still there?'");
         }
         else if (target.kind == InteractionKind.KitchenLight)
         {
             turnedOffKitchenLight = true;
             StoryFlagManager.EnsureExists().SetFlag("KitchenLightOff");
-            ObjectiveManager.EnsureExists().SetObjective("Go to bed");
 
             if (target.lightToTurnOff != null)
             {

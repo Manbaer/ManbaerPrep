@@ -10,6 +10,13 @@ When playing the scene, here are the bugs I noticed:
   - WorldStateApplier now turns renderers and colliders back on when enabling consequence objects.
   - WorldStateApplier also reapplies changes when its scene finishes loading.
 
+- Fixed: Ambience audio sources refused to play when the AudioSource component had been created by editor scripting and saved into the scene.
+  - SimpleAmbientHum now creates its own AudioSource at runtime, which plays reliably.
+  - The saved AudioSource components were removed from all five scenes.
+
+- Fixed: Checking the TV/answering machine/kitchen light advanced a stale leftover objective list ("Eat dinner", "Lock the front door").
+  - The legacy PrototypeGameManager no longer touches objectives; the DayManager owns all objective text.
+
 - Fixed: Play mode froze (Start methods skipped, coroutines stalled) whenever the Unity editor window lost focus.
   - Cause: Run In Background was off, so the play loop stopped ticking while unfocused.
   - Application.runInBackground and PlayerSettings.runInBackground are now enabled.

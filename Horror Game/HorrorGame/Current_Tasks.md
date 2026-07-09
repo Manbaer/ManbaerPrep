@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTasks 01 through 17 are done. The game is playable from Day 1 to all four endings. CurrentTask 18 (full game polish pass) is the recommended next task.
+CurrentTasks 01 through 18 are done. The game is playable from Day 1 to all four endings. CurrentTask 19 (full QA and bug fixing) is the recommended next task.
 
 The project already has:
 
@@ -655,7 +655,7 @@ Done when:
 
 ## CurrentTask 18: Full Game Polish Pass
 
-Status: Not started
+Status: Done (2026-07-08) within blockout scope; see [[Progress]]. Save/checkpoint decision: none needed - a full run is one short sitting and story flags persist for the whole session. Real textures, models, and recorded audio remain future art passes.
 
 Goal:
 
