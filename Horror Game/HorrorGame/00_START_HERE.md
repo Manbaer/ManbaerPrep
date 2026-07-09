@@ -15,6 +15,7 @@ During the day, the player repeats a quiet routine inside the house. At night, t
 - [[Prototype_Vertical_Slice]]
 - [[Open_Questions]]
 - [[Current_Tasks]]
+- [[Walkthrough_Cheat_Sheet]] (full spoilers)
 
 ## Main Loop
 

@@ -218,6 +218,69 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-09 Hub Overhaul Fix Pass (User-Reported Issues)
+
+- Fixed all nine reported placement/clipping issues from the overhaul playtest; details in [[Bugs]]:
+  fuse-room doorway blockers, buried kitchen outlet, floating calendar/table/answering machines,
+  wall skins crossing the front doorway, doorway-to-ceiling gaps (new lintels at all seven doorways),
+  bathroom cabinet/window clip, shower curtain off the tub, and the exterior now stretching away
+  from the front door (street moved out, longer driveway, mailbox at the curb, neighbors across
+  the street, far silhouettes and tree line).
+- Re-verified in Play Mode: moved interactables (answering machine, drawer, fridge, basement door)
+  all work, the basement doorway walk path is clear, no console errors. Scene saved.
+
+2026-07-09 Hub Overhaul: 1990s Suburban House (User Brief)
+
+- Executed the user's HousePrototype overhaul brief within primitive-blockout scope.
+  All gameplay preserved: 27 WorldStateApplier changes verified with 0 null references,
+  all critical objects present, Day 1 flow and door/drawer locks re-tested in Play Mode.
+- Exterior shell and neighborhood (new "Exterior" root, ~130 objects):
+  - Faded siding skin, gabled shingle roof with ridge cap and gable ends, gutters, downspouts,
+    chimney, roof vent, concrete foundation strip, and the fuse-room annex with its own roof
+    and a small basement window.
+  - Covered front porch: concrete stoop and step, posts, sloped roof, welcome mat, weak amber
+    porch light, house numbers, doorbell, mailbox. The Day 6 morning ending trigger zone stays clear;
+    the old redundant day-6 porch slab was removed (trigger + morning light preserved).
+  - Environmental storytelling: old newspaper, unopened mail, dead porch plant, leaning bicycle,
+    rarely-used driveway, garbage bins, AC unit, electric meter, hose bib, utility cable.
+  - Quiet street: wet asphalt with faded center line, sidewalk, curb, three telephone poles with
+    sagging cables, one sodium streetlight switching on, four neighbor-house silhouettes with a
+    single lit window each, trees, shrubs, and a backyard fence. No pedestrians or cars.
+- Weather: cold overcast late afternoon - flat cool ambient, low diffused sun with soft shadows,
+  grey-blue solid sky, gentle exponential haze, wet-look pavement smoothness. Not pitch black.
+- Post-processing: new global Volume (Assets/Settings/HouseMoodProfile.asset) with restrained
+  vignette, thin film grain, gentle bloom, and a slightly desaturated grade; camera post enabled.
+- Interior architecture ("Interior Architecture" root):
+  - Baseboards, doorframes with jambs and headers at all seven doorways, floor thresholds,
+    outlets, switch plates, wall vents.
+  - Wallpaper accent walls (tobacco beige living room, dusty rose bedroom).
+  - Five real windows with trim, sills, cool daylight panes, curtains, rods, and matching warm
+    exterior glow panes - living room x2, bedroom, kitchen, small frosted bathroom.
+- Motivated lighting (all original light objects kept so story references stay valid):
+  - Living room: weak ceiling fixture; warmth from the floor lamp (now shaded) and a new ceramic
+    end-table lamp. Kitchen: slightly harsh fixture. Hallway: dim amber, darker than the rooms.
+  - Bedroom Light physically moved into a new bedside lamp (same GameObject, hospital swap intact).
+  - Bathroom Light became an unpleasant warm-white vanity bar. Cool window fill lights throughout.
+- Room dressing ("Room Dressing" root, all collider-free so pathing and interactions are untouched):
+  - Living room: wooden TV cabinet (retinted stand + shelf), VHS stacks, cable clutter, couch
+    cushions and folded blanket, end table, magazines, newspaper, mug on coaster, framed family
+    photos, wall art, phone cable, carpet wear along the routine path.
+  - Kitchen: upper/lower cabinets, laminate counters, backsplash, sink and faucet, drying rack,
+    stove and range hood, kettle, toaster, microwave, wall phone, calendar, dish towel, fridge
+    magnets and coupon (fridge retinted cream), cereal box, fruit bowl with one apple, mail pile.
+  - Hallway: worn runner and four ordinary family photos ready for later unsettling changes.
+  - Bedroom: bed frame and headboard, bedside table with alarm clock, book, water glass; slippers,
+    laundry basket, carpet wear, dresser handles; closet interior with shelf, rod, hanging clothes,
+    boxes, and a shoebox.
+  - Bathroom: vanity with laminate top, faucet, toothbrush cup, soap dish, towel rail and towel,
+    TP holder, bathmat, shower rod and curtain, water stain, ceiling fan vent.
+  - Fuse room: ceiling pipes, conduits running to the fuse box, utility shelf with paint cans,
+    cardboard boxes, old toolbox, exposed concrete strip.
+- Removed the nine floating debug TextMesh labels (TV, Bed, doors, radio, etc.) - the hover
+  prompts carry readability, and the labels rendered through walls.
+- Verified in Play Mode: Day 1 gating, tasks, door swings, drawer lock, and ambience all work;
+  no console errors or warnings; scene validation clean.
+
 2026-07-08 CurrentTask 18: Full Game Polish Pass (Blockout Scope)
 
 - Lighting pass:

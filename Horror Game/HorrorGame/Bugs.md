@@ -10,6 +10,17 @@ When playing the scene, here are the bugs I noticed:
   - WorldStateApplier now turns renderers and colliders back on when enabling consequence objects.
   - WorldStateApplier also reapplies changes when its scene finishes loading.
 
+- Fixed (2026-07-09, reported after the hub overhaul):
+  - The kitchen counter and fridge partially blocked the basement/fuse-room doorway. Counter moved to z -2.2, fridge to z 1.45; drawer, receipt, mail pile, and fridge magnets moved with them.
+  - The kitchen outlet was hidden behind the new lower cabinets. Moved above the counter line.
+  - The wall calendar floated in the open living/kitchen passage. Moved onto the solid divider segment.
+  - The small answering machine table floated 0.2 above the floor (and the machines above it). Table grounded; all four machine versions now sit flush on the tabletop.
+  - The exterior siding, living-room wallpaper, and foundation strip ran straight across the front doorway (a wall inside the door). All three split with a proper gap plus a siding header.
+  - Doorways were full-height wall gaps, leaving a visible gap between door tops and the ceiling. Added wall lintels above all seven doorways.
+  - The bathroom cabinet clipped into the bathroom window. Window (frame, pane, curtains, exterior glow, fill light) moved to the toilet end of the wall.
+  - The shower rod and curtain hung beside the tub instead of over it. Re-centered on the tub, curtain half-open.
+  - Exiting the front door showed the street stretching sideways. The street block moved 8m farther out, the driveway lengthened, the mailbox walked to the curb, two neighbors moved across the street facing the door, and far silhouettes + a tree line were added for depth.
+
 - Fixed: Ambience audio sources refused to play when the AudioSource component had been created by editor scripting and saved into the scene.
   - SimpleAmbientHum now creates its own AudioSource at runtime, which plays reliably.
   - The saved AudioSource components were removed from all five scenes.

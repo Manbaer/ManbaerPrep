@@ -1,746 +1,193 @@
-# Current_Tasks
+Status: Done (2026-07-09) within primitive-blockout scope. Verified in Play Mode; see [[Progress]]. Everything below that requires real meshes, textures, decals, or recorded audio (wallpaper patterns, shingle detail, upholstery, photorealistic wear) remains for a future asset pass - the current version realizes the brief's layout, composition, palette, lighting, weather, and set dressing with primitives and materials.
+
+```
+Perform a complete visual and environmental overhaul of the HousePrototype hub scene for a first-person psychological horror game. Preserve the existing gameplay, room layout, interactions, story flags, scripted transformations, doors, objectives, colliders, and player pathing. Do not remove or replace functional objects. Upgrade the scene around them and replace placeholder geometry only when its gameplay function remains intact.
 
-This file breaks the game into reasonable development chunks from the current prototype to a complete game.
+The house belongs to an isolated shut-in and should feel like a believable, modest North American suburban home built or renovated in the late 1980s or early 1990s. It must be visually beautiful, atmospheric, detailed, and cohesive—but never luxurious, gothic, ruined, or obviously haunted. Its horror should come from loneliness, stagnant routine, uneasy lighting, accumulated history, and small details that seem subtly wrong.
 
-Use this as the living task roadmap. Each chunk should be finished, tested, and logged in [[Progress]] before moving to the next major chunk.
+VISUAL IDENTITY
 
-Related design docs:
+Create a grounded 1990s domestic-horror aesthetic:
+
+- Slightly faded wallpaper, painted drywall, stained wood trim, old carpet, vinyl flooring, ceramic bathroom tiles, laminate counters, brass or aged-metal fixtures, and hollow wooden doors.
+- A restrained palette of tobacco brown, muted beige, faded green, dusty rose, cream, dull blue, amber, and nicotine-stained off-white.
+- Surfaces should have subtle wear: fingerprints near switches, rubbed doorframes, carpet discoloration, faded areas behind furniture, minor water staining, chipped trim, dust in corners, slightly yellowed plastics, and scratched furniture.
+- Avoid excessive dirt, gore, destruction, cobwebs, or abandoned-house clichés. Someone still lives here and follows a routine, but has gradually stopped caring for the space.
+- Use realistic proportions and human-scale architecture. The house should feel slightly cramped and low-ceilinged, creating intimacy and unease.
+- Add architectural thickness to walls, proper doorframes, baseboards, crown or ceiling trim where appropriate, window frames, windowsills, vents, outlets, light switches, thresholds, and believable transitions between floor materials.
+- Break up overly straight, perfect, or empty surfaces with subtle imperfections and lived-in details.
+- Maintain clear navigation and readable interactable objects.
 
-- [[Core_Premise]]
-- [[Dream_Environments]]
-- [[Real_World_Consequences]]
-- [[Story_Flags]]
-- [[Prototype_Vertical_Slice]]
-- [[Ending_Concepts]]
-- [[Open_Questions]]
+HOUSE EXTERIOR
+
+Build a complete exterior shell around the existing interior rather than leaving the hub as an isolated collection of rooms.
+
+The house should be a modest one- or one-and-a-half-storey 1990s suburban home with:
+
+- Faded horizontal siding or aging brick-and-siding construction.
+- A dark, weathered shingle roof with gutters, downspouts, flashing, vents, and a simple chimney.
+- A small covered front porch or concrete stoop.
+- Wooden porch posts, an old porch light, house numbers, mailbox, doorbell, worn welcome mat, and a few concrete steps.
+- A narrow driveway, possibly leading toward a simple garage or closed side structure.
+- Foundation walls and small basement windows, especially near the fuse-room side of the house.
+- Utility details such as an electrical meter, exterior cables, utility box, hose bib, garbage bins, and an old air-conditioning unit.
+- A back or side yard suggested through fencing, shrubs, and darkness even if it is not explorable.
+- Curtains and blinds visible from outside, with selected rooms producing warm window light.
+
+Surround the house with a quiet residential environment:
+
+- A narrow suburban street, cracked pavement, faded road markings, concrete sidewalk, curbs, driveways, telephone poles, overhead power cables, and distant neighboring houses.
+- Uneven grass, overgrown shrubs, weeds along the foundation, several mature trees, damp soil, fallen leaves, and a backyard fence.
+- Neighboring homes should exist mostly as silhouettes or restrained low-detail structures so the player senses a real neighborhood without feeling accompanied.
+- No visible pedestrians or moving cars.
+- Use environmental storytelling: an old newspaper near the porch, an unused bicycle or garden tool, unopened mail, a dead porch plant, curtains that have not been moved in years, and a driveway that looks rarely used.
+- The outside world should appear reachable but emotionally distant.
 
-## Current Priority
+OUTSIDE LIGHTING AND WEATHER
+
+Set the normal hub atmosphere during a cold, overcast late afternoon approaching evening. This provides enough natural light to understand the house while making artificial interior lighting important.
+
+Use:
+
+- Soft, cool blue-grey skylight.
+- A low, diffused sun hidden behind clouds.
+- Long but very soft shadows.
+- Slight atmospheric haze and damp air.
+- Dark cloud cover with a faint pale break near the horizon.
+- Subtle wetness or recently finished rain rather than a heavy storm.
+- Small reflections on pavement, porch steps, window glass, and leaves.
+- Very gentle tree and shrub movement.
+- Restrained exterior fog that adds depth without visibly filling the interior.
+- Warm interior windows contrasting with the cold exterior.
+- A dim amber porch light that feels weak against the approaching night.
+- Distant sodium-vapor or early suburban streetlights beginning to switch on.
+
+The exterior must not become pitch black. Preserve silhouettes and environmental depth. The contrast should communicate that the house is physically warmer than the outside but psychologically less safe.
+
+INTERIOR LIGHTING
+
+Replace flat, uniform room lighting with motivated, layered lighting. Every light should visibly come from a believable fixture.
+
+General rules:
+
+- Use warm tungsten practical lights in lived-in rooms.
+- Use cool window fill from outdoors.
+- Let corners fall into soft shadow.
+- Avoid illuminating every surface equally.
+- Use subtle bounced light and contact shadows.
+- Keep interactable objects readable without making them glow unnaturally.
+- Use modest reflection probes and light probes.
+- Add believable lampshades, bulbs, ceiling fixtures, switch plates, and fixture geometry.
+- Use restrained ambient occlusion, bloom, color grading, film grain, and vignette.
+- Avoid crushed blacks, extreme bloom, excessive fog, or a modern cinematic teal-and-orange appearance.
 
-CurrentTasks 01 through 18 are done. The game is playable from Day 1 to all four endings. CurrentTask 19 (full QA and bug fixing) is the recommended next task.
+The lighting should make the house beautiful through contrast: warm pools of domestic light surrounded by cool, quiet shadow.
 
-The project already has:
+LIVING ROOM
 
-- Main menu
-- HousePrototype scene
-- DreamHallway scene
-- Basic interaction system
-- Story flags
-- Objectives
-- Scene loading
-- WorldStateApplier
-- A simple dream-to-house return flow
+Develop the living room as the emotional center of the routine:
 
-The next goal is to turn that simple flow into the first real vertical slice from [[Prototype_Vertical_Slice]].
-
-## Roadmap Overview
-
-1. Finish the first real hallway dream loop.
-2. Make the first real-world consequences meaningful.
-3. Expand the house into a stronger repeatable hub.
-4. Add the wheat field dream and power consequences.
-5. Add the hospital dream and medical-memory consequences.
-6. Add the gas station dream and item consequences.
-7. Build the final combined-house act.
-8. Add the three main endings and optional secret ending.
-9. Polish, test, balance, and prepare a complete playable version.
-
-## CurrentTask 01: Upgrade The Hallway Dream Puzzle
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Dream_Environments#Endless Bedroom Hallway]]
-- [[Prototype_Vertical_Slice#Dream Puzzle]]
-
-Goal:
-
-Turn the current simple strange-door dream into the first real dream puzzle.
-
-Build:
-
-- Add repeated hallway sections.
-- Add wrong-memory objects:
-  - Upside-down painting
-  - Flickering lamp
-  - Ringing telephone
-  - Backward clock
-  - Mirror that does not show the player
-- Make the player interact with the wrong object in each loop.
-- Move the bedroom door closer after each correct interaction.
-- Reset the hallway if the player chooses the wrong object.
-- Set `DreamHallwayComplete` when the final door is reached.
-
-Keep it simple:
-
-- Use basic placeholder props at first.
-- Use clear interaction prompts.
-- Keep the puzzle readable before making it scarier.
-
-Done when:
-
-- The player can enter DreamHallway from the bed.
-- The player can solve the five-object sequence.
-- Wrong choices reset or clearly punish the loop.
-- The final bedroom door returns the player to the house.
-- `DreamHallwayComplete` is set.
-- Unity console has no errors.
-
-## CurrentTask 02: Add First Wake-Up Consequences
-
-Status: Done (2026-07-08, together with CurrentTask 03). Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Real_World_Consequences#Bedroom Hallway Consequences]]
-- [[Story_Flags#Bedroom Hallway Flags]]
-
-Goal:
-
-Make the first completed dream visibly change the real house.
-
-Build:
-
-- Add a changed bedroom photo.
-- Add a new answering machine message.
-- Unlock the closet.
-- Make the bedroom door slightly open after waking.
-- Make the bedsheets messy after waking.
-- Optional: cover the bathroom mirror if there is a bathroom area.
-
-Story flags:
-
-- `BedroomMemoryChanged`
-- `AnsweringMachineMessageUnlocked`
-- `ClosetUnlockedAfterHallway`
-- `BathroomMirrorCovered`
-- `HouseClocksImpossibleTime`
-
-Done when:
-
-- Returning from DreamHallway changes the house.
-- The player can notice at least three clear differences.
-- The closet becomes newly interactable.
-- The answering machine has a new message after the dream.
-- The changes persist when reloading the house scene during the session.
-
-## CurrentTask 03: Make The House A Stronger Hub
-
-Status: Done (2026-07-08, together with CurrentTask 02). Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Core_Premise]]
-- [[Real_World_Consequences]]
-- [[Open_Questions#House Questions]]
-
-Goal:
-
-Turn the house from a single prototype room into a reusable hub for the whole game.
-
-Build:
-
-- Decide the first full house layout.
-- Add or block out key rooms:
-  - Bedroom
-  - Hallway
-  - Kitchen
-  - Living room
-  - Bathroom
-  - Closet
-  - Basement or basement door
-  - Front door
-- Add locked or unusable areas for later dreams.
-- Add simple interactables for photos, notes, TV, answering machine, doors, and lights.
-- Make the front door present early, even if it cannot be used yet.
-
-Done when:
-
-- The house feels like a place the player can return to repeatedly.
-- Locked areas clearly suggest future changes.
-- The first hallway dream consequences have somewhere meaningful to appear.
-- The player understands the normal day routine before the next dream.
-
-## CurrentTask 04: Add Day Progression And Sleep Routine
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Day 2 currently ends with "sleep will not come" until the wheat field dream exists (CurrentTask 05); add "DreamHallway" replacement scene name to the Day 2 plan once built.
-
-Design source:
-
-- [[Core_Premise#Main Idea]]
-- [[Prototype_Vertical_Slice#House Tasks]]
-
-Goal:
-
-Create a simple repeatable day structure that can support multiple dreams.
-
-Build:
-
-- Add day numbers or internal progression stages.
-- Let different tasks appear on different days.
-- Keep tasks ordinary:
-  - Watch TV.
-  - Check answering machine.
-  - Eat or inspect kitchen.
-  - Turn off lights.
-  - Check a newly changed room.
-  - Go to bed.
-- Make bed availability depend on required tasks.
-- Update objective text as the player progresses.
-
-Done when:
-
-- Day 1 leads to the hallway dream.
-- Day 2 can begin after the hallway dream.
-- The player cannot skip straight to sleep unless required tasks are complete.
-- The system is simple enough to keep expanding.
-
-## CurrentTask 05: Build Wheat Field Dream Blockout
-
-Status: Done (2026-07-08, together with CurrentTask 06). Verified in Play Mode; see [[Progress]]. Audio (wind/hum) is still placeholder-silent; add during the polish pass.
-
-Design source:
-
-- [[Dream_Environments#Infinite Wheat Field With Electrical Poles]]
-
-Goal:
-
-Create the second dream environment as a playable blockout.
-
-Build:
-
-- Create a wheat field or field-like open space.
-- Add a distant house with no power.
-- Add electrical poles stretching into the distance.
-- Add pole boxes with symbols:
-  - Moon
-  - House
-  - Eye
-  - Clock
-  - Tree
-  - Door
-- Add a dead fuse box clue: "The house remembers the order."
-- Add a door that appears after the puzzle is solved.
-
-Done when:
-
-- The player can enter the wheat field dream from sleep progression.
-- The dream has a clear start, puzzle area, and exit.
-- The space has wind, electrical hum, and distant-house mood.
-- The dream can return the player to the house.
-
-## CurrentTask 06: Add Wheat Field Circuit Puzzle
-
-Status: Done (2026-07-08, together with CurrentTask 05). Symbol-order style chosen; clue ties to the day 2 house changes. Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Dream_Environments#Puzzle Restore the Circuit]]
-- [[Dream_Environments#Puzzle Variant Follow the Humming]]
-
-Goal:
-
-Make the wheat field dream solveable.
-
-Build:
-
-- Choose one puzzle style first:
-  - Symbol order from the house
-  - Loudest electrical humming
-  - Simple combination of both
-- Let the player activate poles in the correct order.
-- Turn on distant lights after correct choices.
-- Rearrange or reset the field after wrong choices.
-- Set `WheatFieldPowerRestored` when complete.
-
-Done when:
-
-- The player can understand the circuit clue.
-- Correct pole choices visibly restore power.
-- Wrong choices have a clear result.
-- The exit door appears after completion.
-- `WheatFieldPowerRestored` is set.
-
-## CurrentTask 07: Add Power Consequences In The House
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Wall buzzing and radio audio are text placeholders until the audio/polish pass.
-
-Design source:
-
-- [[Real_World_Consequences#Wheat Field Consequences]]
-- [[Story_Flags#Wheat Field Flags]]
-
-Goal:
-
-Make the wheat field dream unlock electrical changes and a new area.
-
-Build:
-
-- Turn on basement or utility room light.
-- Let the player enter a previously dark or blocked area.
-- Add TV static when the TV is off.
-- Add flickering kitchen light.
-- Add wall buzzing near electrical areas.
-- Add radio with strange audio.
-
-Story flags:
-
-- `HousePowerChanged`
-- `TVCanTurnOnByItself`
-- `LockedBasementLightEnabled`
-- `FuseRoomUnlocked`
-- `WallBuzzingEnabled`
-- `RadioStrangeAudioUnlocked`
-
-Done when:
-
-- The house visibly reacts to restored power.
-- A new area becomes available.
-- The TV/radio/electrical changes add story mood.
-- The player has a reason to explore before the next sleep cycle.
-
-## CurrentTask 08: Build Hospital Dream Blockout
-
-Status: Done (2026-07-08, together with CurrentTask 09). Verified in Play Mode; see [[Progress]]. The hallway is a long foggy corridor rather than a true loop; revisit during polish if a looping effect is wanted.
-
-Design source:
-
-- [[Dream_Environments#Hospital Dream]]
-
-Goal:
-
-Create the third dream environment as a playable blockout.
-
-Build:
-
-- Add a 1990s hospital ward.
-- Add looping hospital hallway.
-- Add abandoned nurse station.
-- Add patient rooms 201 through 204.
-- Put one house object in each room:
-  - TV
-  - Kitchen table
-  - Childhood photo
-  - Player's bed
-- Add intercom clues.
-- Add locked medicine cabinet.
-
-Done when:
-
-- The hospital dream has a readable layout.
-- The player can identify room differences.
-- The player can find the room decorated like the bedroom.
-- The dream has an exit path ready for the puzzle.
-
-## CurrentTask 09: Add Hospital Patient File Puzzle
-
-Status: Done (2026-07-08, together with CurrentTask 08). Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Dream_Environments#Puzzle Find the Correct Patient File]]
-- [[Dream_Environments#Puzzle Variant Wrong Rooms]]
-
-Goal:
-
-Make the hospital dream solveable without using self-harm as an objective.
-
-Build:
-
-- Add a patient wristband.
-- Add patient charts or files.
-- Match name or number to the correct room.
-- Unlock the medicine cabinet.
-- Retrieve a medical item.
-- Use the item on a machine, mannequin patient, or memory scene.
-- Add discharge paper and exit door.
-- Set `HospitalDreamComplete` and `PatientFileFound`.
-
-Done when:
-
-- The puzzle is clear and safe in objective framing.
-- The hospital hallway changes after the solution.
-- The exit unlocks.
-- `HospitalDreamComplete` is set.
-
-## CurrentTask 10: Add Medical Memory Consequences
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Real_World_Consequences#Hospital Consequences]]
-- [[Story_Flags#Hospital Flags]]
-
-Goal:
-
-Make the house reveal medical or caretaking backstory after the hospital dream.
-
-Build:
-
-- Add medical document on kitchen table.
-- Add clinic answering machine message.
-- Add old medication bottles in bathroom cabinet.
-- Add hospital privacy curtain or clinical lighting in bedroom.
-- Unlock a new drawer with story clue.
-
-Story flags:
-
-- `HouseMedicalMemoryUnlocked`
-- `BedroomChangedToSickRoom`
-- `ClinicMessageUnlocked`
-- `MedicalDrawerUnlocked`
-
-Done when:
-
-- The player sees the bedroom become less safe and more clinical.
-- The new clues imply backstory without explaining everything.
-- The unlocked drawer gives a meaningful story object or clue.
-
-## CurrentTask 11: Build Gas Station Dream Blockout
-
-Status: Done (2026-07-08, together with CurrentTask 12). Verified in Play Mode; see [[Progress]]. Rain is not implemented yet (mood comes from darkness, fog, and neon); add rain during the polish pass.
-
-Design source:
-
-- [[Dream_Environments#Infinite Gas Station]]
-
-Goal:
-
-Create the fourth dream environment as a playable blockout.
-
-Build:
-
-- Add 1990s gas station exterior at night.
-- Add rain, neon sign, empty road mood.
-- Add interior aisles:
-  - Snacks
-  - Motor oil
-  - Magazines
-  - Soda
-  - Maps
-  - Batteries
-  - VHS tapes
-- Add cashier counter and old register.
-- Add payphone.
-- Make deeper aisles become stranger.
-
-Done when:
-
-- The gas station has an inside, outside, aisles, and counter.
-- The player can explore and collect placeholder items.
-- The gas station mood is clear before final art polish.
-
-## CurrentTask 12: Add Gas Station Item Puzzle
-
-Status: Done (2026-07-08, together with CurrentTask 11). Receipt-puzzle style chosen (remember/watch/open). Verified in Play Mode; see [[Progress]].
-
-Design source:
-
-- [[Dream_Environments#Puzzle Buy the Correct Items]]
-- [[Dream_Environments#Puzzle Variant Receipt Puzzle]]
-
-Goal:
-
-Make the gas station dream solveable and connect it to real house needs.
-
-Build:
-
-- Add item collection:
-  - Batteries
-  - VHS tape
-  - Key
-  - Map
-  - Optional photo or milk carton
-- Add register total: "TOTAL: 3 MEMORIES."
-- Add receipt clue:
-  - 1 thing to remember
-  - 1 thing to watch
-  - 1 thing to open
-- Let the player place correct items on the counter.
-- Print receipt with home address.
-- Unlock exit door.
-- Set `GasStationDreamComplete`.
-
-Done when:
-
-- The player can solve the item selection puzzle.
-- Correct items connect to house problems.
-- Wrong item choices give a clear response.
-- The gas station exit returns to the house.
-
-## CurrentTask 13: Add Item Consequences In The House
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. The TV remote and impossible map only appear if the player bought the batteries/map in the dream; they are optional bonuses, not required Day 5 tasks (avoids a softlock).
-
-Design source:
-
-- [[Real_World_Consequences#Gas Station Consequences]]
-- [[Story_Flags#Gas Station Flags]]
-
-Goal:
-
-Make gas station dream items appear in the real house.
-
-Build:
-
-- Add receipt on kitchen counter.
-- Add gas station food in fridge.
-- Make TV remote work.
-- Spawn VHS tape beside TV.
-- Let the player play VHS tape.
-- Add map showing impossible rooms.
-- Unlock drawer with dream key.
-- Let the front door briefly open to an impossible road.
-
-Story flags:
-
-- `DreamBatteriesCollected`
-- `DreamVHSCollected`
-- `DreamKeyCollected`
-- `DreamMapCollected`
-- `HouseDrawerUnlocked`
-- `TVRemoteWorks`
-- `VHSCanBePlayed`
-- `ImpossibleRoadDoorEnabled`
-
-Done when:
-
-- Dream items clearly become real items.
-- VHS playback reveals a major story clue.
-- The front door feels closer to being important.
-
-## CurrentTask 14: Narrative Clue Pass
-
-Status: Done (2026-07-08). All in-game text written and documented in [[Narrative_Clues]], including the two intended story readings, the five open questions, and a consistency checklist.
-
-Design source:
-
-- [[Core_Premise#Story Interpretation]]
-- [[Open_Questions#Story Questions]]
-
-Goal:
-
-Make sure the player can piece together the story without direct exposition.
-
-Build:
-
-- Write answering machine messages.
-- Write VHS tape moments.
-- Write receipt text.
-- Write medical document text.
-- Write photo and drawer clues.
-- Decide what is implied about:
-  - The player
-  - The house
-  - The hospital
-  - Someone who used to live there
-  - Why the player stopped leaving
-- Keep the mystery ambiguous.
-
-Done when:
-
-- Each dream adds a new piece of story.
-- The player can form theories without being told the full answer.
-- Clues do not contradict each other.
-- The final act has enough emotional setup.
-
-## CurrentTask 15: Build The House After Sleep
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Runs inside HousePrototype as Day 6, driven by HouseAfterSleepStarted.
-
-Design source:
-
-- [[Real_World_Consequences#Final Act Consequences]]
-- [[Ending_Concepts#Final Act Structure]]
-
-Goal:
-
-Create the final combined-house sequence.
-
-Build:
-
-- Make dreams and reality overlap:
-  - Bedroom door opens into gas station aisle.
-  - Hallway windows show wheat field.
-  - Bathroom has hospital lighting.
-  - TV plays footage of player sleeping.
-  - Answering machine plays messages from different dates.
-  - Front door opens into endless hallway.
-- Add final dream objects:
-  - Clock
-  - Fuse
-  - Patient file
-  - Receipt
-  - VHS tape
-- Let the player place or use each object in the house.
-- Unlock the front door after all final objects are used.
-
-Story flags:
-
-- `AllDreamsComplete`
-- `HouseAfterSleepStarted`
-- `FinalClockPlaced`
-- `FinalFusePlaced`
-- `FinalPatientFilePlaced`
-- `FinalReceiptPlaced`
-- `FinalVHSTapePlayed`
-- `FrontDoorUnlocked`
-
-Done when:
-
-- The house feels like every dream is leaking into it.
-- The final object puzzle is clear.
-- The front door unlock moment feels quiet and important.
-
-## CurrentTask 16: Add Main Endings
-
-Status: Done (2026-07-08). All three endings verified in Play Mode; see [[Progress]]. Endings are quiet in-house sequences that return to the main menu; dedicated ending scenes/credits can come in the polish pass.
-
-Design source:
-
-- [[Ending_Concepts#Main Ending Choice]]
-- [[Ending_Concepts#Ending 1 Leave the House Morning]]
-- [[Ending_Concepts#Ending 2 Stay Inside Routine]]
-- [[Ending_Concepts#Ending 3 Go Back to Sleep Dream House]]
-
-Goal:
-
-Add the three main endings using player movement instead of a menu choice.
-
-Build:
-
-- Walk outside -> Morning ending.
-- Close the door -> Routine ending.
-- Go back upstairs to bed -> Dream House ending.
-- Add ending flags:
-  - `EndingLeaveHouse`
-  - `EndingStayInside`
-  - `EndingGoBackToSleep`
-- Add simple ending scenes or controlled sequences.
-- Keep each ending quiet and unsettling.
-
-Done when:
-
-- The player can naturally choose each ending.
-- Each ending has a distinct emotional meaning.
-- The game can return to main menu or credits after an ending.
-
-## CurrentTask 17: Add Secret Front Door Ending
-
-Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Hidden condition: on Day 5, study both optional dream items (TV remote + impossible map), then try the front door a second time.
-
-Design source:
-
-- [[Ending_Concepts#Secret Ending Open the Front Door Early]]
-- [[Open_Questions#Ending Questions]]
-
-Goal:
-
-Add an optional hidden ending where the player opens the front door early.
-
-Build:
-
-- Decide hidden conditions.
-- Let front door open early only after those conditions are met.
-- Show the endless wheat field outside instead of a normal street.
-- Set `SecretEndingFrontDoorEarly`.
-- Keep this ending disturbing but not clearly good or bad.
-
-Done when:
-
-- The secret ending is discoverable but not obvious.
-- It supports the idea that the outside world may already be part of the dream.
-- It does not break the main progression.
-
-## CurrentTask 18: Full Game Polish Pass
-
-Status: Done (2026-07-08) within blockout scope; see [[Progress]]. Save/checkpoint decision: none needed - a full run is one short sitting and story flags persist for the whole session. Real textures, models, and recorded audio remain future art passes.
-
-Goal:
-
-Make the whole game feel cohesive, readable, and complete.
-
-Build:
-
-- Improve lighting in every scene.
-- Improve sound and ambience.
-- Add simple 1990s props and textures.
-- Make interaction prompts consistent.
-- Make objective text consistent.
-- Add pause/settings polish.
-- Add save/checkpoint strategy if needed.
-- Add credits.
-- Remove temporary debug-only objects from final flow.
-
-Done when:
-
-- All major scenes feel like the same game.
-- The player always understands what they can interact with.
-- The game has a beginning, middle, final act, and endings.
-- There are no obvious placeholder blockers.
-
-## CurrentTask 19: Full QA And Bug Fixing
-
-Status: Not started
-
-Goal:
-
-Test the complete game from start to finish.
-
-Test:
-
-- Main menu to ending flow.
-- Every dream puzzle.
-- Every house consequence.
-- Every locked and unlocked room.
-- Every story flag.
-- Every ending.
-- Pause menu.
-- Scene loading.
-- Restarting or replaying after an ending.
-
-Done when:
-
-- No console errors.
-- No broken progression.
-- No missing exits.
-- No softlocks.
-- No major visual problems.
-- All known bugs are either fixed or listed in [[Bugs]].
-
-## CurrentTask 20: Release Candidate
-
-Status: Not started
-
-Goal:
-
-Prepare a complete playable build.
-
-Build:
-
-- Create final build settings.
-- Confirm scene order.
-- Test a fresh build outside the Unity Editor.
-- Add final title screen details.
-- Add simple credits.
-- Archive current design docs and progress.
-- Make a final known-issues list if needed.
-
-Done when:
-
-- A full build can be played from start to finish.
-- The player can reach all intended endings.
-- Progression does not require developer tools.
-- The project has a clean final progress note.
-
-## Notes For Future Codex Work
-
-- Keep scripts beginner-friendly.
-- Keep systems Inspector-driven when possible.
-- Add comments for non-obvious logic.
-- Do not build all dream environments at once.
-- Finish and test one dream-to-house loop before starting the next.
-- Update [[Progress]] after each completed task chunk.
-- If something breaks, update [[Bugs]].
-
+- Preserve the television, VCR, radio, answering machine, couch, coffee table, rug, wall clock, floor lamp, and front door.
+- Replace placeholder furniture with worn but believable 1980s–1990s pieces.
+- Give the couch faded patterned upholstery, slightly compressed cushions, a folded blanket, and subtle fabric wear.
+- Add a substantial wooden television cabinet or stand, cable clutter, VHS storage, remote-control marks, and dust around electronics.
+- Add end tables, a ceramic lamp, coasters, old magazines, a local newspaper, an ashtray or empty mug if suitable, framed family photographs, modest wall art, curtains, and blinds.
+- Place the answering machine where it feels intentionally checked every day.
+- Add a wall vent, outlets, telephone cable, and small signs that furniture has remained in the same position for years.
+- Use the floor lamp and one table lamp as the main warm sources. The ceiling fixture may be weak, unused, or slightly unpleasant.
+- Let the television cast subtle cold flicker only when its story state requires it.
+- Keep the front door visually important from the beginning. Frame it through composition and light without making it obviously supernatural.
+
+KITCHEN
+
+Create a compact, practical early-1990s kitchen:
+
+- Preserve the fridge, counters, kitchen table, chairs, clocks, note, light switch, locked drawer, receipts, medical documents, and story objects.
+- Add upper and lower cabinets, handles, drawers, backsplash, sink, faucet, drying rack, stove, range hood, kettle, toaster, microwave, dish towels, wall phone, calendar, grocery lists, and a small collection of mismatched dishes.
+- Use aged laminate counters, off-white appliances, yellowed plastic, and worn vinyl or linoleum flooring.
+- Add restrained clutter: cereal box, unopened mail, pill organizer only when story-appropriate, old magnets, coupons, and a nearly empty fruit bowl.
+- Make the refrigerator look old and frequently opened, with a low internal glow visible when appropriate.
+- Use a slightly harsh ceiling fixture with warmer spill from the living room.
+- After the power-related dream, the kitchen fixture can flicker subtly while maintaining player visibility.
+- Ensure documents placed on the table remain clear focal points.
+
+HALLWAY
+
+Treat the central hallway as a visual transition and recurring horror space:
+
+- Preserve its connections to every room and all picture frames, clocks, junction boxes, and dream transformations.
+- Add narrow proportions, baseboards, ceiling fixtures, vents, switches, framed photographs, and subtle carpet or wood wear from repeated walking.
+- Use repeating doorframes and pools of light to echo the endless hallway dream without altering the real layout.
+- The hallway should be darker than adjoining rooms.
+- Place cool window light or faint spill at one end and weak amber light at the other.
+- Keep its geometry normal during early days, but design it so later impossible extensions and wheat-field windows integrate naturally.
+- Family photographs should initially look ordinary at a glance while remaining suitable for later unsettling changes.
+
+BEDROOM
+
+Make the bedroom the most personal and initially safest room:
+
+- Preserve the bed, pillow, bedsheet states, dresser, photographs, drawer, closet, bedroom door, gas-station leak, patient file, and hospital curtain transformation.
+- Add a proper bed frame, headboard, layered bedding, slightly worn blankets, realistic pillows, bedside table, alarm clock, lamp, books, glass of water, slippers, laundry basket, curtains, and personal clutter.
+- Use faded carpet with subtle compression around the bed.
+- The dresser should contain believable handles, scratches, dust-free areas where objects were recently moved, and space for photographs.
+- The closet should feel physically built into the architecture, with trim, shelf depth, hanging clothes, boxes, and darkness beyond the door.
+- Normal bedroom lighting should be warm, gentle, and low, primarily from a bedside lamp and indirect hallway spill.
+- Keep a trace of cold exterior light at the curtains.
+- After the hospital dream, allow the warm lighting to be replaced by cold white-green clinical light, with the privacy curtain and medical details feeling invasively out of place.
+- Ensure later gas-station aisle elements can invade the room without visual confusion.
+
+BATHROOM
+
+Build a small, believable bathroom:
+
+- Preserve the sink, mirror and covered-mirror state, cabinet and medication state, toilet, bathtub, and hospital-light transformation.
+- Add a vanity, faucet, plumbing details, towel rail, towels, toilet-paper holder, shower curtain, bathmat, soap dish, toothbrush cup, ventilation fan, small frosted window, and aging grout.
+- Use pale ceramic tile, worn linoleum, or both.
+- Add slight condensation stains, minor water damage near the tub, and subtle mirror spotting.
+- Normal lighting should be a slightly unpleasant warm-white vanity or ceiling fixture.
+- Allow cool exterior light through frosted glass.
+- The covered mirror must remain a powerful visual change.
+- During the final act, the hospital-white lighting should feel sterile and incompatible with the domestic materials.
+
+FUSE ROOM / BASEMENT AREA
+
+Make the fuse room feel like a genuine addition to the house:
+
+- Preserve the basement door, fuse box, shelf, bare-bulb light, electrical interactions, and final fuse placement.
+- Add exposed foundation concrete, pipes, conduits, insulation, joists, utility shelving, paint cans, cardboard boxes, old tools, cobwebs used sparingly, and a small basement window.
+- Use a colder, damper palette than the rest of the house.
+- Before power is restored, it should be almost unreadable beyond the doorway but not mechanically unfair.
+- After power restoration, illuminate it with a weak bare bulb that creates hard shadows and emphasizes cables and pipes.
+- Electrical buzzing should feel connected to visible infrastructure.
+- Make the fuse box and final puzzle area visually readable.
+
+STORY PROGRESSION
+
+The upgraded environment must support every state of the house:
+
+1. Early house: ordinary, lonely, warm but stagnant.
+2. After the hallway dream: altered photograph, impossible clocks, ajar bedroom door, messy sheets, covered mirror, unlocked closet.
+3. After the wheat-field dream: changed electrical behavior, flickering kitchen light, living wall buzz, television static, strange radio, illuminated fuse room.
+4. After the hospital dream: medical documents, medication, clinical bedroom lighting, privacy curtain, unlocked drawer.
+5. After the gas-station dream: receipt, food, remote, VHS tape, impossible map, drawer key, and impossible road outside.
+6. Final House After Sleep: gas-station aisle invading the bedroom, wheat field through hallway windows, hospital bathroom light, footage of the sleeping player, messages from conflicting dates, and the endless hallway behind the front door.
+
+Each stage should retain the same recognizable house. Do not simply add random horror clutter. Changes must feel precise, symbolic, and connected to memory.
+
+FINAL PRESENTATION
+
+Aim for high-quality indie psychological horror rather than photorealism at any cost. Use detailed but performance-conscious models, consistent texel density, sensible material reuse, LODs where useful, occlusion culling, baked or mixed lighting where appropriate, and carefully placed real-time lights for story events.
+
+The final result should feel:
+
+- Beautifully composed.
+- Believable as a lived-in 1990s home.
+- Warm and inviting from a distance.
+- Claustrophobic and emotionally stagnant from inside.
+- Rich in environmental storytelling.
+- Quiet rather than theatrical.
+- Capable of becoming increasingly wrong without losing its original identity.
+
+The player should look around and believe that somebody has lived the same day in this house for years. The house should feel protective, oppressive, familiar, and watchful—all at once.
+```
