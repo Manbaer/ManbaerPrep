@@ -81,6 +81,21 @@ public static class StoryFlags
     public const string FuseRoomUnlocked = "FuseRoomUnlocked";
     public const string HouseDrawerUnlocked = "HouseDrawerUnlocked";
     public const string FrontDoorUnlocked = "FrontDoorUnlocked";
+
+    // Final act: the house after sleep.
+    public const string AllDreamsComplete = "AllDreamsComplete";
+    public const string HouseAfterSleepStarted = "HouseAfterSleepStarted";
+    public const string FinalClockPlaced = "FinalClockPlaced";
+    public const string FinalFusePlaced = "FinalFusePlaced";
+    public const string FinalPatientFilePlaced = "FinalPatientFilePlaced";
+    public const string FinalReceiptPlaced = "FinalReceiptPlaced";
+    public const string FinalVHSTapePlayed = "FinalVHSTapePlayed";
+
+    // Endings.
+    public const string EndingLeaveHouse = "EndingLeaveHouse";
+    public const string EndingStayInside = "EndingStayInside";
+    public const string EndingGoBackToSleep = "EndingGoBackToSleep";
+    public const string SecretEndingFrontDoorEarly = "SecretEndingFrontDoorEarly";
     public const string HouseChangedAfterDreamOne = "HouseChangedAfterDreamOne";
     public const string FoundDreamObject = "FoundDreamObject";
 }

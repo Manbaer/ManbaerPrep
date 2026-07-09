@@ -218,6 +218,45 @@
   - The Dream Change Object appears in the house and HouseChangedAfterDreamOne is set.
 - Validated both scenes; no issues. Checked the Unity console; no errors or warnings.
 
+2026-07-08 CurrentTask 15 + 16 + 17: The House After Sleep And All Four Endings
+
+- The final act runs inside HousePrototype as Day 6. Sleeping on Day 5 sets HouseAfterSleepStarted
+  (new DayPlan field flagToSetOnSleep) and reloads the house with every dream leaking in:
+  - A gas station aisle grows along the bedroom wall (shelf, red neon, "price tags are all bedtimes").
+  - Two windows that were never there appear in the hallway, glowing gold with wheat outside.
+  - The bathroom light turns hospital white-green and flickers slowly.
+  - The TV shows live footage of the player asleep on the couch ("You wave. The you on the couch does not.").
+  - The answering machine plays every message from every date at once.
+  - The old front door is replaced by the final front door, locked until the house "finishes remembering".
+- Five final dream objects appear, one per dream plus the receipt; placing each sets its flag:
+  hallway clock (set to 7:42), field fuse (the walls go quiet), Chart 204 (filed away, marked AWAKE),
+  the receipt (laid beside the grocery note), the VHS tape ("the small voice says: wake up").
+- When all five are placed, FinalActManager quietly sets FrontDoorUnlocked:
+  "Somewhere inside the front door, something stops being locked." Objective: "Decide."
+- Three movement-based endings (CurrentTask 16), each a quiet sequence that returns to the main menu:
+  - Open the door and walk outside into the morning -> EndingLeaveHouse (EndingTrigger volume on the porch).
+  - Open the door, then close it -> EndingStayInside (FrontDoorEnding: "Tomorrow will be the same, and that is the point.").
+  - Go back to bed -> EndingGoBackToSleep (DayPlan sleepIsEnding; "a small voice says goodnight. You say it back.").
+- Secret ending (CurrentTask 17), on the Day 5 impossible-road front door:
+  - Hidden condition: use the dream-battery TV remote AND study the impossible map, then try the door a second time.
+  - "The door opens all the way this time. Wheat to the horizon, where the street should be." -> SecretEndingFrontDoorEarly.
+  - The first door try (a required Day 5 task) can never trigger it, so main progression is safe.
+- New beginner-friendly scripts in Assets/Scripts/Story:
+  - EndingRunner.cs (flag + final message + delay + return to MainMenu, one ending at a time)
+  - EndingTrigger.cs (walk-into-it ending volume)
+  - FrontDoorEnding.cs (open onto morning, close for the routine ending)
+  - FinalActManager.cs (watches the five final flags, unlocks the door)
+  - SecretFrontDoor.cs (hidden early ending conditions)
+  - DayManager DayPlan gained flagToSetOnSleep and sleepIsEnding/endingFlag/endingMessage.
+- Also set Application.runInBackground / PlayerSettings.runInBackground to true: play mode now keeps
+  running when the editor loses focus. This explained two earlier oddities (skipped Starts, stalled coroutines).
+- Verified in Play Mode:
+  - Secret ending fires only on the second Day 5 door try with both optional items studied, then returns to the menu.
+  - Day 6 activates all six leaks and five final objects; AllDreamsComplete set.
+  - The door stays locked at 4 of 5 objects and unlocks quietly at 5.
+  - All three main endings play their message and return to the main menu; all four ending flags confirmed.
+- Validated the scene; no issues. Checked the Unity console; no errors or warnings.
+
 2026-07-08 CurrentTask 13 + 14: Item Consequences And Narrative Clue Pass
 
 - Added seven item consequences to the house, driven by GasStationDreamComplete and the individual

@@ -16,7 +16,7 @@ Related design docs:
 
 ## Current Priority
 
-CurrentTasks 01 through 14 are done. CurrentTask 15 (the house after sleep / final act) is the recommended next task.
+CurrentTasks 01 through 17 are done. The game is playable from Day 1 to all four endings. CurrentTask 18 (full game polish pass) is the recommended next task.
 
 The project already has:
 
@@ -547,7 +547,7 @@ Done when:
 
 ## CurrentTask 15: Build The House After Sleep
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Runs inside HousePrototype as Day 6, driven by HouseAfterSleepStarted.
 
 Design source:
 
@@ -595,7 +595,7 @@ Done when:
 
 ## CurrentTask 16: Add Main Endings
 
-Status: Not started
+Status: Done (2026-07-08). All three endings verified in Play Mode; see [[Progress]]. Endings are quiet in-house sequences that return to the main menu; dedicated ending scenes/credits can come in the polish pass.
 
 Design source:
 
@@ -628,7 +628,7 @@ Done when:
 
 ## CurrentTask 17: Add Secret Front Door Ending
 
-Status: Not started
+Status: Done (2026-07-08). Verified in Play Mode; see [[Progress]]. Hidden condition: on Day 5, study both optional dream items (TV remote + impossible map), then try the front door a second time.
 
 Design source:
 

@@ -21,6 +21,15 @@ public class DayPlan
     // next dream is not built yet; cannotSleepMessage is shown instead.
     public string dreamSceneToLoad = "";
     public string cannotSleepMessage = "You lie down, but sleep will not come.";
+
+    // Optional story flag set the moment the player sleeps on this day.
+    // Used to start the final act (HouseAfterSleepStarted).
+    public string flagToSetOnSleep = "";
+
+    // If true, sleeping on this day IS an ending instead of a dream.
+    public bool sleepIsEnding;
+    public string endingFlag = "";
+    public string endingMessage = "";
 }
 
 // Tracks which day it is and runs the sleep routine.
@@ -117,6 +126,18 @@ public class DayManager : MonoBehaviour
         {
             ShowMessage(plan.bedNotReadyMessage);
             return;
+        }
+
+        if (plan.sleepIsEnding)
+        {
+            // On the last day, going back to bed is one of the endings.
+            EndingRunner.RunEnding(plan.endingFlag, plan.endingMessage, 7f);
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(plan.flagToSetOnSleep))
+        {
+            StoryFlagManager.EnsureExists().SetFlag(plan.flagToSetOnSleep);
         }
 
         if (string.IsNullOrWhiteSpace(plan.dreamSceneToLoad))

@@ -10,6 +10,11 @@ When playing the scene, here are the bugs I noticed:
   - WorldStateApplier now turns renderers and colliders back on when enabling consequence objects.
   - WorldStateApplier also reapplies changes when its scene finishes loading.
 
+- Fixed: Play mode froze (Start methods skipped, coroutines stalled) whenever the Unity editor window lost focus.
+  - Cause: Run In Background was off, so the play loop stopped ticking while unfocused.
+  - Application.runInBackground and PlayerSettings.runInBackground are now enabled.
+  - This was the root cause behind the earlier gas station pickup oddity.
+
 - Fixed: Gas station items could sometimes not be picked up (their pickup hook was added in Start, which the editor occasionally skipped after a scene load hiccup).
   - GasStationItem now hooks its pickup listener in Awake and finds the puzzle manager at pickup time, so load order never matters.
 
