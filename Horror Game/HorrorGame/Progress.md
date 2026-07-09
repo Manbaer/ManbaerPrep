@@ -1,3 +1,40 @@
+2026-07-09 Camera, Movement, And Analog Post Rework (Fears-to-Fathom Feel)
+
+- Reworked the first-person feel toward a grounded, lo-fi, "standing inside the house" atmosphere
+  while preserving all existing gameplay (CharacterController, mouse look, E-interaction from the
+  camera, pause, objectives, doors, story events).
+- Rewrote Assets/Scripts/SimpleFirstPersonPlayer.cs in place (same class name, so all scene
+  references stayed intact):
+  - Slower weighted movement: walk 2.6 m/s, optional sprint 4.2 m/s ("anxious fast walk"),
+    smooth acceleration (~0.16s) and quicker deceleration (~0.10s), normalized diagonals, believable gravity.
+  - Lightly smoothed mouse look (~0.045s) with separate X/Y sensitivity, invert-Y, a sensitivity
+    scale for menus, a raw-input accessibility option, and a +/-80 degree pitch clamp.
+  - Mouse look now yaws the body and pitches a "Camera Pitch Pivot"; the script auto-builds that
+    pivot at runtime in ANY scene, so the rework applies to all five scenes without hand-editing them.
+  - Small restrained reticle dot that only appears on interactables (no permanent crosshair);
+    click-to-relock and the prompt box are unchanged.
+  - Exposes read-only PlanarSpeed / IsGrounded / IsSprinting / StrafeInput for the camera effects.
+- New Assets/Scripts/Player/CameraEffects.cs (sits on the camera, only writes tiny local offsets):
+  - Velocity-driven head bob (soft sine, ~0.022 vertical / ~0.016 horizontal, ~1.75 steps/s, slightly
+    more when sprinting), a small strafe roll, a little turn lag that catches up, and extremely subtle
+    irregular breathing while idle (below ~0.004 m). Eases smoothly to neutral on stop and while paused.
+  - 0-1 accessibility strengths for head bob, sway, and breathing, plus a story hook for heavier
+    breathing during authored moments (never automatic). Added to all five scene cameras.
+- Camera lens: eye height 1.65 m, FOV 68 (house), near clip 0.04, SMAA to reduce shimmer.
+- Analog post-processing on Assets/Settings/HouseMoodProfile.asset (house): tuned vignette (0.16),
+  thin film grain (0.2), high-threshold soft bloom, muted cool color grade (saturation -12, contrast +8,
+  faint cool filter, slight negative exposure), added faint chromatic aberration (0.04), near-invisible
+  lens distortion (-0.03), and Neutral tonemapping for controlled (non-pumping) exposure.
+- New Assets/Scripts/Player/AnalogFilterController.cs on the House Mood Volume: one 0-1 strength value
+  (and an on/off toggle) that drives the Volume weight, so the analog look can be dialed down or fully
+  disabled from a settings menu without affecting speed, footsteps, interaction, or story.
+- Verified: clean compile (no errors/warnings), Play Mode confirmed the runtime rig builds correctly
+  (pivot at 1.65, camera reparented, effects + analog controller live, idle breathing offset present),
+  no runtime console errors. All five scenes saved.
+- Deferred to a follow-up chunk (added to Current_Tasks): per-surface footstep audio, hooking the new
+  accessibility values into the Settings menu UI, Low/Medium/High/Analog quality presets, and the
+  per-dream authored camera responses (wind, clinical stability, gas-station noise, final-act FOV drift).
+
 2026-07-07
 
 - Built the first Unity prototype.

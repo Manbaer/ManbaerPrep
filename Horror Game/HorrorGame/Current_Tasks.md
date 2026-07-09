@@ -1,193 +1,311 @@
-Status: Done (2026-07-09) within primitive-blockout scope. Verified in Play Mode; see [[Progress]]. Everything below that requires real meshes, textures, decals, or recorded audio (wallpaper patterns, shingle detail, upholstery, photorealistic wear) remains for a future asset pass - the current version realizes the brief's layout, composition, palette, lighting, weather, and set dressing with primitives and materials.
+STATUS (2026-07-09): Core rework DONE - see Progress.md.
+Delivered: grounded weighted movement + smoothed mouse look (SimpleFirstPersonPlayer, applies to all
+scenes via a runtime camera pitch pivot), velocity-driven head bob / strafe roll / turn lag / idle
+breathing with 0-1 accessibility strengths (CameraEffects, on all five scene cameras), camera lens
+(1.65m eye height, FOV 68, near clip 0.04, SMAA), analog URP post on the house (grain, vignette,
+chromatic aberration, soft bloom, faint lens distortion, muted cool grade, Neutral tonemapping), and a
+one-slider AnalogFilterController to scale/disable the analog look. Verified in Play Mode, no console errors.
 
-```
-Perform a complete visual and environmental overhaul of the HousePrototype hub scene for a first-person psychological horror game. Preserve the existing gameplay, room layout, interactions, story flags, scripted transformations, doors, objectives, colliders, and player pathing. Do not remove or replace functional objects. Upgrade the scene around them and replace placeholder geometry only when its gameplay function remains intact.
+REMAINING FOLLOW-UP CHUNKS (next work):
+1. Footsteps + physical presence: per-surface footstep audio (carpet/wood/vinyl/tile/concrete/grass/wet),
+   pitch/volume variation, triggered from the head-bob step cycle; quiet clothing/weight-settle sounds.
+2. Settings menu wiring: expose FOV, X/Y sensitivity, invert-Y, head-bob/sway/breathing strength,
+   analog strength, film grain, chromatic aberration, motion blur, screen shake, reticle, sprint
+   toggle/hold, and raw/smoothed mouse in the existing Settings panel, saving with PlayerPrefs.
+3. Visual presets: Low / Medium / High / Analog quality presets.
+4. Per-dream authored camera responses: gentle wind sway (wheat field), unnaturally stable/clinical
+   (hospital), stronger analog noise + wet bloom (gas station), subtle 2-4 degree FOV drift in the
+   final House After Sleep, plus optional near-invisible hallway lens distortion. All gradual/reversible.
+5. Optional: simple corner-lean (Q/E) if it stays simple and never pushes the controller through walls.
 
-The house belongs to an isolated shut-in and should feel like a believable, modest North American suburban home built or renovated in the late 1980s or early 1990s. It must be visually beautiful, atmospheric, detailed, and cohesive—but never luxurious, gothic, ruined, or obviously haunted. Its horror should come from loneliness, stagnant routine, uneasy lighting, accumulated history, and small details that seem subtly wrong.
+------------------------------------------------------------------------
+ORIGINAL BRIEF (reference):
 
-VISUAL IDENTITY
+Rework the first-person camera, player movement, and post-processing for my Unity psychological horror game. The desired feeling is inspired by the grounded, lo-fi analog atmosphere of Fears to Fathom: intimate first-person exploration, slightly imperfect camera movement, retro digital/VHS presentation, realistic darkness, and the uncomfortable feeling that the player is physically standing inside the house.
 
-Create a grounded 1990s domestic-horror aesthetic:
+Do not directly copy assets, shaders, UI, or exact effects from Fears to Fathom. Capture the broader visual language and player feeling while preserving this game’s own 1990s house-and-dream identity.
 
-- Slightly faded wallpaper, painted drywall, stained wood trim, old carpet, vinyl flooring, ceramic bathroom tiles, laminate counters, brass or aged-metal fixtures, and hollow wooden doors.
-- A restrained palette of tobacco brown, muted beige, faded green, dusty rose, cream, dull blue, amber, and nicotine-stained off-white.
-- Surfaces should have subtle wear: fingerprints near switches, rubbed doorframes, carpet discoloration, faded areas behind furniture, minor water staining, chipped trim, dust in corners, slightly yellowed plastics, and scratched furniture.
-- Avoid excessive dirt, gore, destruction, cobwebs, or abandoned-house clichés. Someone still lives here and follows a routine, but has gradually stopped caring for the space.
-- Use realistic proportions and human-scale architecture. The house should feel slightly cramped and low-ceilinged, creating intimacy and unease.
-- Add architectural thickness to walls, proper doorframes, baseboards, crown or ceiling trim where appropriate, window frames, windowsills, vents, outlets, light switches, thresholds, and believable transitions between floor materials.
-- Break up overly straight, perfect, or empty surfaces with subtle imperfections and lived-in details.
-- Maintain clear navigation and readable interactable objects.
+IMPORTANT PROJECT REQUIREMENTS
 
-HOUSE EXTERIOR
+- This is a Unity URP project.
+- Preserve the existing CharacterController-based movement.
+- Preserve mouse-look, interaction raycasts, interaction distance, pause behavior, objectives, doors, story events, and all existing gameplay.
+- The interaction ray must continue to originate from the player camera.
+- Keep all new scripts simple, commented, beginner-friendly, and exposed in the Inspector.
+- Do not use Cinemachine unless it provides a clear benefit.
+- Do not make the camera floaty, cinematic, drunk, or uncomfortable.
+- The player should feel vulnerable and human, not like a fast FPS character.
+- Camera effects must never interfere with puzzle readability.
 
-Build a complete exterior shell around the existing interior rather than leaving the hub as an isolated collection of rooms.
+CAMERA POSITION AND LENS
 
-The house should be a modest one- or one-and-a-half-storey 1990s suburban home with:
+Make the camera feel like a person walking through a cramped residential house:
 
-- Faded horizontal siding or aging brick-and-siding construction.
-- A dark, weathered shingle roof with gutters, downspouts, flashing, vents, and a simple chimney.
-- A small covered front porch or concrete stoop.
-- Wooden porch posts, an old porch light, house numbers, mailbox, doorbell, worn welcome mat, and a few concrete steps.
-- A narrow driveway, possibly leading toward a simple garage or closed side structure.
-- Foundation walls and small basement windows, especially near the fuse-room side of the house.
-- Utility details such as an electrical meter, exterior cables, utility box, hose bib, garbage bins, and an old air-conditioning unit.
-- A back or side yard suggested through fencing, shrubs, and darkness even if it is not explorable.
-- Curtains and blinds visible from outside, with selected rooms producing warm window light.
+- Camera eye height: approximately 1.62–1.68 metres.
+- Default vertical field of view: approximately 68 degrees.
+- Provide an adjustable FOV range of 60–80.
+- Use a near clipping plane around 0.03–0.05 so walls and doors do not disappear when approached.
+- Do not use an extreme wide-angle or fisheye effect.
+- The house should feel enclosed because of its architecture and movement speed, not because the FOV is artificially narrow.
+- Use normal perspective projection.
+- Keep the horizon level while standing still.
+- Avoid permanent Dutch angles.
+- Do not allow the camera to clip through walls, doors, furniture, or the ceiling.
 
-Surround the house with a quiet residential environment:
+MOUSE LOOK
 
-- A narrow suburban street, cracked pavement, faded road markings, concrete sidewalk, curbs, driveways, telephone poles, overhead power cables, and distant neighboring houses.
-- Uneven grass, overgrown shrubs, weeds along the foundation, several mature trees, damp soil, fallen leaves, and a backyard fence.
-- Neighboring homes should exist mostly as silhouettes or restrained low-detail structures so the player senses a real neighborhood without feeling accompanied.
-- No visible pedestrians or moving cars.
-- Use environmental storytelling: an old newspaper near the porch, an unused bicycle or garden tool, unopened mail, a dead porch plant, curtains that have not been moved in years, and a driveway that looks rarely used.
-- The outside world should appear reachable but emotionally distant.
+Replace raw, mechanically sharp mouse movement with responsive but subtly weighted looking:
 
-OUTSIDE LIGHTING AND WEATHER
+- Keep mouse input immediate enough to feel controllable.
+- Add very light smoothing, approximately 0.03–0.06 seconds.
+- Do not create noticeable input lag.
+- Separate horizontal and vertical sensitivity controls.
+- Add an invert-Y option.
+- Clamp vertical look to approximately -80 and +80 degrees.
+- Support sensitivity adjustment in the settings menu.
+- Allow raw input as an accessibility option.
+- Do not add automatic camera movement while the player is standing still, except for extremely subtle breathing.
 
-Set the normal hub atmosphere during a cold, overcast late afternoon approaching evening. This provides enough natural light to understand the house while making artificial interior lighting important.
+Looking around should feel deliberate and observant. The player should naturally examine doorways, dark corners, photographs, windows, and objects without fighting the camera.
+
+PLAYER MOVEMENT FEEL
+
+Make movement slower and more physical than a typical first-person action game:
+
+- Walking speed: approximately 2.4–2.8 metres per second.
+- Optional sprint speed: approximately 4.0–4.5 metres per second.
+- Sprint should feel like anxious fast walking rather than athletic running.
+- Add smooth acceleration over approximately 0.12–0.20 seconds.
+- Add slightly quicker but still smooth deceleration.
+- Preserve precise movement around furniture and interactable objects.
+- Reduce or remove slippery diagonal movement.
+- Normalize diagonal input so it is not faster.
+- Use believable gravity and grounded behavior.
+- The player should not jump unless jumping is required by the game.
+- Do not add crouching unless it has a real gameplay purpose.
+- Add a small amount of inertia without making controls frustrating.
+- Allow the player to stop accurately beside doors, tables, and clues.
+
+Movement should make crossing the house feel meaningful. The player should never glide silently like a spectator camera.
+
+HEAD BOB
+
+Add restrained procedural head movement connected to actual player velocity:
+
+Walking:
+
+- Vertical amplitude around 0.018–0.028 metres.
+- Horizontal amplitude around 0.012–0.020 metres.
+- Frequency around 1.6–1.9 steps per second.
+- Use a soft sine-based motion.
+- Include tiny rotation, no more than approximately 0.15–0.30 degrees.
+
+Sprinting:
+
+- Increase frequency and amplitude only slightly.
+- Do not create aggressive bouncing.
+- Add a small increase in forward momentum and breathing intensity.
+
+Stopping:
+
+- Smoothly return the camera to its neutral position.
+- Never snap the camera back to centre.
+- Do not continue bobbing when pushing into a wall.
+- Base the effect on real CharacterController velocity, not input alone.
+
+Provide an accessibility slider from 0% to 100%, including the ability to disable head bob completely.
+
+STEP SWAY AND TURNING
+
+Add subtle physical imperfections:
+
+- Very small lateral camera sway while walking.
+- A tiny amount of roll when strafing, approximately 0.2–0.4 degrees maximum.
+- A tiny amount of camera lag during sharp turns.
+- Smoothly catch up within a fraction of a second.
+- Do not make the camera feel detached from the body.
+- Do not apply strong roll during ordinary mouse movement.
+- Remove all sway while paused or during menus.
+
+The effect should usually be felt subconsciously rather than visibly noticed.
+
+BREATHING AND IDLE MOTION
+
+When standing still:
+
+- Add extremely subtle breathing movement.
+- Vertical displacement should remain below approximately 0.004 metres.
+- Rotation should remain below approximately 0.05 degrees.
+- Use a slow, irregular rhythm rather than an obvious looping sine wave.
+- Reduce or disable breathing while the player is reading an important object.
+- Increase breathing slightly during selected dream or final-act moments only when controlled by story state.
+- Never use breathing motion to simulate fear automatically without narrative cause.
+
+FOOTSTEPS AND PHYSICAL PRESENCE
+
+Connect movement to sound so the camera feels grounded:
+
+- Trigger footsteps from travelled distance or the head-bob step cycle.
+- Use different sounds for carpet, wood, vinyl, bathroom tile, concrete, grass, and wet pavement.
+- Add slight pitch and volume variation.
+- Footsteps should be quieter on bedroom carpet and sharper in the bathroom or fuse room.
+- Add subtle clothing movement during faster movement.
+- Add quiet landing or weight-settling sounds when descending small steps.
+- Interior footsteps should have room-appropriate reverb.
+- Do not play footsteps while the player is stationary or pushing against a collider.
+
+INTERACTION FEEL
+
+Preserve the existing E-to-interact system while making it more natural:
+
+- Keep interaction raycasts tied to the centre of the camera.
+- Use an interaction range around 2.5–3 metres.
+- Add a small, minimal centre reticle only when looking at something interactable.
+- Avoid a permanent bright crosshair.
+- Make interaction prompts small, clean, and slightly imperfect in keeping with the analog presentation.
+- Optionally add a very subtle camera focus or hand-reaching suggestion when operating doors, switches, tapes, phones, and drawers.
+- Never pull control away from the player for ordinary interactions.
+- Do not add strong zooming every time the player interacts.
+- Important readable documents may use a controlled inspection view with head bob temporarily disabled.
+
+DOORWAYS AND CORNERS
+
+The camera should make doorways feel tense:
+
+- Keep the player close enough to doors that opening one reveals the room gradually.
+- Do not automatically centre the camera on doors.
+- Allow the player to lean visually around corners only if it can be implemented simply and does not complicate controls.
+- If leaning is included, use a very small offset and roll with Q and E or an optional control.
+- Leaning must not move the CharacterController through walls.
+- It should be optional and may be omitted if it weakens simplicity.
+
+CAMERA RESPONSE TO STORY EVENTS
+
+Keep the normal camera restrained so unusual moments have more impact:
+
+- Do not use constant screen shake.
+- Electrical flickers may cause an almost imperceptible exposure response, not physical camera shaking.
+- Loud dream events may use a single soft camera impulse.
+- The endless hallway can introduce slightly heavier turn smoothing or nearly invisible lens distortion.
+- The wheat-field dream can use gentle wind-driven camera movement.
+- The hospital dream can feel unnaturally stable and clinical.
+- The gas-station dream can use stronger analog noise and wet-light bloom.
+- The final House After Sleep may subtly change FOV by 2–4 degrees during impossible transitions.
+- These changes must be gradual and reversible.
+- Never use effects that reveal puzzle solutions or disorient the player unfairly.
+
+ANALOG VISUAL PRESENTATION
+
+Create a restrained lo-fi 1990s recorded-video appearance using URP post-processing and, if necessary, a lightweight custom full-screen effect.
 
 Use:
 
-- Soft, cool blue-grey skylight.
-- A low, diffused sun hidden behind clouds.
-- Long but very soft shadows.
-- Slight atmospheric haze and damp air.
-- Dark cloud cover with a faint pale break near the horizon.
-- Subtle wetness or recently finished rain rather than a heavy storm.
-- Small reflections on pavement, porch steps, window glass, and leaves.
-- Very gentle tree and shrub movement.
-- Restrained exterior fog that adds depth without visibly filling the interior.
-- Warm interior windows contrasting with the cold exterior.
-- A dim amber porch light that feels weak against the approaching night.
-- Distant sodium-vapor or early suburban streetlights beginning to switch on.
+- Slightly reduced internal rendering resolution or subtle pixel structure.
+- Mild film grain.
+- Very faint chromatic aberration near the edges.
+- Subtle colour bleeding.
+- Slightly crushed blacks without removing important shadow detail.
+- Soft highlight bloom around lamps, television screens, streetlights, and reflective wet surfaces.
+- Mild lens distortion, close to invisible.
+- Very subtle vignette.
+- Slight temporal instability or analog noise.
+- Occasional faint horizontal interference associated with supernatural events.
+- Restrained sharpening or softness that resembles consumer video rather than modern cinematic footage.
+- Cool blue-grey shadows and warm amber practical lights.
+- Muted saturation with selected reds, greens, and warm lamps remaining noticeable.
 
-The exterior must not become pitch black. Preserve silhouettes and environmental depth. The contrast should communicate that the house is physically warmer than the outside but psychologically less safe.
+Suggested starting strengths:
 
-INTERIOR LIGHTING
+- Film grain: 0.15–0.25.
+- Vignette: 0.12–0.20 with soft edges.
+- Chromatic aberration: 0.02–0.06.
+- Bloom: low intensity with a relatively high threshold.
+- Lens distortion: extremely subtle, approximately -0.02 to -0.05.
+- Saturation: approximately -8 to -15.
+- Contrast: approximately +5 to +12.
 
-Replace flat, uniform room lighting with motivated, layered lighting. Every light should visibly come from a believable fixture.
+These are starting points, not mandatory final values. Judge the result in motion.
 
-General rules:
+Do not use:
 
-- Use warm tungsten practical lights in lived-in rooms.
-- Use cool window fill from outdoors.
-- Let corners fall into soft shadow.
-- Avoid illuminating every surface equally.
-- Use subtle bounced light and contact shadows.
-- Keep interactable objects readable without making them glow unnaturally.
-- Use modest reflection probes and light probes.
-- Add believable lampshades, bulbs, ceiling fixtures, switch plates, and fixture geometry.
-- Use restrained ambient occlusion, bloom, color grading, film grain, and vignette.
-- Avoid crushed blacks, extreme bloom, excessive fog, or a modern cinematic teal-and-orange appearance.
+- Heavy VHS tracking lines at all times.
+- Constant glitching.
+- Excessive chromatic aberration.
+- Strong fisheye distortion.
+- Extreme pixelation that makes text unreadable.
+- Excessive bloom.
+- Pure black shadows.
+- Strong motion blur.
+- Aggressive depth of field during ordinary exploration.
+- Fake dust and scratches covering the entire screen.
+- A bright modern horror-game crosshair.
 
-The lighting should make the house beautiful through contrast: warm pools of domestic light surrounded by cool, quiet shadow.
+IMAGE QUALITY AND RESOLUTION
 
-LIVING ROOM
+The result should feel intentionally lo-fi, not simply low quality:
 
-Develop the living room as the emotional center of the routine:
+- Preserve clean silhouettes and readable interactable objects.
+- Use modern lighting and materials beneath the retro treatment.
+- Allow the analog filter to be disabled.
+- Provide Low, Medium, High, and Analog visual presets.
+- Keep UI text rendered clearly after the analog effect if possible.
+- Do not distort pause menus or accessibility menus.
+- Avoid unstable anti-aliasing shimmer.
+- Test at 1080p and common aspect ratios.
+- Keep the horror presentation effective at both high and low graphics settings.
 
-- Preserve the television, VCR, radio, answering machine, couch, coffee table, rug, wall clock, floor lamp, and front door.
-- Replace placeholder furniture with worn but believable 1980s–1990s pieces.
-- Give the couch faded patterned upholstery, slightly compressed cushions, a folded blanket, and subtle fabric wear.
-- Add a substantial wooden television cabinet or stand, cable clutter, VHS storage, remote-control marks, and dust around electronics.
-- Add end tables, a ceramic lamp, coasters, old magazines, a local newspaper, an ashtray or empty mug if suitable, framed family photographs, modest wall art, curtains, and blinds.
-- Place the answering machine where it feels intentionally checked every day.
-- Add a wall vent, outlets, telephone cable, and small signs that furniture has remained in the same position for years.
-- Use the floor lamp and one table lamp as the main warm sources. The ceiling fixture may be weak, unused, or slightly unpleasant.
-- Let the television cast subtle cold flicker only when its story state requires it.
-- Keep the front door visually important from the beginning. Frame it through composition and light without making it obviously supernatural.
+MOTION BLUR AND DEPTH OF FIELD
 
-KITCHEN
+- Disable motion blur by default.
+- If used, apply only an extremely low camera-motion blur value.
+- Never smear the screen during mouse movement.
+- Keep gameplay depth of field disabled or extremely subtle.
+- Use depth of field only for controlled document inspection or selected story sequences.
+- Provide toggles for both effects.
 
-Create a compact, practical early-1990s kitchen:
+EXPOSURE
 
-- Preserve the fridge, counters, kitchen table, chairs, clocks, note, light switch, locked drawer, receipts, medical documents, and story objects.
-- Add upper and lower cabinets, handles, drawers, backsplash, sink, faucet, drying rack, stove, range hood, kettle, toaster, microwave, dish towels, wall phone, calendar, grocery lists, and a small collection of mismatched dishes.
-- Use aged laminate counters, off-white appliances, yellowed plastic, and worn vinyl or linoleum flooring.
-- Add restrained clutter: cereal box, unopened mail, pill organizer only when story-appropriate, old magnets, coupons, and a nearly empty fruit bowl.
-- Make the refrigerator look old and frequently opened, with a low internal glow visible when appropriate.
-- Use a slightly harsh ceiling fixture with warmer spill from the living room.
-- After the power-related dream, the kitchen fixture can flicker subtly while maintaining player visibility.
-- Ensure documents placed on the table remain clear focal points.
+Use controlled exposure rather than aggressive automatic adaptation:
 
-HALLWAY
+- Prevent the image from pumping brighter and darker whenever the player turns.
+- Interior exposure should keep lamps warm while preserving details in shadowed doorways.
+- Windows should be somewhat brighter than the room but not pure white rectangles.
+- Moving between the house and outside may use slow, subtle adaptation.
+- Dream-state exposure changes should be authored rather than random.
 
-Treat the central hallway as a visual transition and recurring horror space:
+ACCESSIBILITY
 
-- Preserve its connections to every room and all picture frames, clocks, junction boxes, and dream transformations.
-- Add narrow proportions, baseboards, ceiling fixtures, vents, switches, framed photographs, and subtle carpet or wood wear from repeated walking.
-- Use repeating doorframes and pools of light to echo the endless hallway dream without altering the real layout.
-- The hallway should be darker than adjoining rooms.
-- Place cool window light or faint spill at one end and weak amber light at the other.
-- Keep its geometry normal during early days, but design it so later impossible extensions and wheat-field windows integrate naturally.
-- Family photographs should initially look ordinary at a glance while remaining suitable for later unsettling changes.
+Provide settings for:
 
-BEDROOM
+- FOV.
+- Mouse sensitivity.
+- Invert Y.
+- Head-bob strength.
+- Camera sway strength.
+- Analog/VHS filter strength.
+- Film grain.
+- Chromatic aberration.
+- Motion blur.
+- Screen shake.
+- Reticle visibility.
+- Sprint toggle or hold.
+- Raw or smoothed mouse input.
 
-Make the bedroom the most personal and initially safest room:
+Disabling camera motion effects must not affect player speed, footsteps, interactions, or story progression.
 
-- Preserve the bed, pillow, bedsheet states, dresser, photographs, drawer, closet, bedroom door, gas-station leak, patient file, and hospital curtain transformation.
-- Add a proper bed frame, headboard, layered bedding, slightly worn blankets, realistic pillows, bedside table, alarm clock, lamp, books, glass of water, slippers, laundry basket, curtains, and personal clutter.
-- Use faded carpet with subtle compression around the bed.
-- The dresser should contain believable handles, scratches, dust-free areas where objects were recently moved, and space for photographs.
-- The closet should feel physically built into the architecture, with trim, shelf depth, hanging clothes, boxes, and darkness beyond the door.
-- Normal bedroom lighting should be warm, gentle, and low, primarily from a bedside lamp and indirect hallway spill.
-- Keep a trace of cold exterior light at the curtains.
-- After the hospital dream, allow the warm lighting to be replaced by cold white-green clinical light, with the privacy curtain and medical details feeling invasively out of place.
-- Ensure later gas-station aisle elements can invade the room without visual confusion.
+TARGET PLAYER EXPERIENCE
 
-BATHROOM
+The completed camera should make the player feel physically present inside a quiet house late at night. Movement should be cautious and slightly heavy. Looking around should be smooth, responsive, and intimate. The camera should reveal rooms gradually and make empty doorways uncomfortable without relying on jumpscares.
 
-Build a small, believable bathroom:
+The analog graphics should suggest an old memory, home video, or reconstructed event. The player should occasionally wonder whether they are controlling a person, watching a recording, or remembering something incorrectly.
 
-- Preserve the sink, mirror and covered-mirror state, cabinet and medication state, toilet, bathtub, and hospital-light transformation.
-- Add a vanity, faucet, plumbing details, towel rail, towels, toilet-paper holder, shower curtain, bathmat, soap dish, toothbrush cup, ventilation fan, small frosted window, and aging grout.
-- Use pale ceramic tile, worn linoleum, or both.
-- Add slight condensation stains, minor water damage near the tub, and subtle mirror spotting.
-- Normal lighting should be a slightly unpleasant warm-white vanity or ceiling fixture.
-- Allow cool exterior light through frosted glass.
-- The covered mirror must remain a powerful visual change.
-- During the final act, the hospital-white lighting should feel sterile and incompatible with the domestic materials.
+The final feeling should be:
 
-FUSE ROOM / BASEMENT AREA
-
-Make the fuse room feel like a genuine addition to the house:
-
-- Preserve the basement door, fuse box, shelf, bare-bulb light, electrical interactions, and final fuse placement.
-- Add exposed foundation concrete, pipes, conduits, insulation, joists, utility shelving, paint cans, cardboard boxes, old tools, cobwebs used sparingly, and a small basement window.
-- Use a colder, damper palette than the rest of the house.
-- Before power is restored, it should be almost unreadable beyond the doorway but not mechanically unfair.
-- After power restoration, illuminate it with a weak bare bulb that creates hard shadows and emphasizes cables and pipes.
-- Electrical buzzing should feel connected to visible infrastructure.
-- Make the fuse box and final puzzle area visually readable.
-
-STORY PROGRESSION
-
-The upgraded environment must support every state of the house:
-
-1. Early house: ordinary, lonely, warm but stagnant.
-2. After the hallway dream: altered photograph, impossible clocks, ajar bedroom door, messy sheets, covered mirror, unlocked closet.
-3. After the wheat-field dream: changed electrical behavior, flickering kitchen light, living wall buzz, television static, strange radio, illuminated fuse room.
-4. After the hospital dream: medical documents, medication, clinical bedroom lighting, privacy curtain, unlocked drawer.
-5. After the gas-station dream: receipt, food, remote, VHS tape, impossible map, drawer key, and impossible road outside.
-6. Final House After Sleep: gas-station aisle invading the bedroom, wheat field through hallway windows, hospital bathroom light, footage of the sleeping player, messages from conflicting dates, and the endless hallway behind the front door.
-
-Each stage should retain the same recognizable house. Do not simply add random horror clutter. Changes must feel precise, symbolic, and connected to memory.
-
-FINAL PRESENTATION
-
-Aim for high-quality indie psychological horror rather than photorealism at any cost. Use detailed but performance-conscious models, consistent texel density, sensible material reuse, LODs where useful, occlusion culling, baked or mixed lighting where appropriate, and carefully placed real-time lights for story events.
-
-The final result should feel:
-
-- Beautifully composed.
-- Believable as a lived-in 1990s home.
-- Warm and inviting from a distance.
-- Claustrophobic and emotionally stagnant from inside.
-- Rich in environmental storytelling.
-- Quiet rather than theatrical.
-- Capable of becoming increasingly wrong without losing its original identity.
-
-The player should look around and believe that somebody has lived the same day in this house for years. The house should feel protective, oppressive, familiar, and watchful—all at once.
-```
+- Grounded.
+- Intimate.
+- Vulnerable.
+- Lo-fi but visually deliberate.
+- Smooth enough to play comfortably.
+- Slightly imperfect.
+- Quietly unsettling.
+- Similar in atmosphere to Fears to Fathom, while remaining visually and mechanically distinct to this project.

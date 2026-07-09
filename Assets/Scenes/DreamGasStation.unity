@@ -2334,9 +2334,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleFirstPersonPlayer
   playerCamera: {fileID: 1087446566}
-  moveSpeed: 4
+  walkSpeed: 2.6
+  sprintSpeed: 4.2
+  allowSprint: 1
+  holdToSprint: 1
+  sprintKey: 304
+  accelerationTime: 0.16
+  decelerationTime: 0.1
+  gravity: -18
+  groundedStick: -2
   mouseSensitivity: 2
+  mouseSensitivityY: 2
+  invertY: 0
+  lookSensitivityScale: 1
+  lookSmoothing: 0.045
+  rawMouseInput: 0
+  pitchClamp: 80
   interactDistance: 3
+  interactKey: 101
+  showReticle: 1
 --- !u!143 &392075850
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5867,6 +5883,7 @@ GameObject:
   - component: {fileID: 1087446568}
   - component: {fileID: 1087446566}
   - component: {fileID: 1087446567}
+  - component: {fileID: 1087446569}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -5905,7 +5922,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.03
+  near clip plane: 0.04
   far clip plane: 300
   field of view: 68
   orthographic: 0
@@ -5948,6 +5965,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 392075851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087446569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087446565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8697c4f7aaa8bd843936104f5b5a71cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraEffects
+  player: {fileID: 392075849}
+  headBobStrength: 1
+  swayStrength: 1
+  breathingStrength: 1
+  walkBobVertical: 0.022
+  walkBobHorizontal: 0.016
+  walkStepsPerSecond: 1.75
+  walkBobRotation: 0.22
+  sprintBobMultiplier: 1.35
+  sprintStepsPerSecond: 2.3
+  strafeRoll: 0.35
+  turnLagAmount: 0.9
+  turnLagRecovery: 12
+  breathVertical: 0.0035
+  breathRotation: 0.045
+  breathPeriod: 4.2
+  breathingMoodMultiplier: 1
+  smoothing: 10
+  effectsEnabled: 1
 --- !u!1 &1088119511
 GameObject:
   m_ObjectHideFlags: 0

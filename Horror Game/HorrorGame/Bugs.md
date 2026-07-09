@@ -1,5 +1,13 @@
 When playing the scene, here are the bugs I noticed:
 
+- Fixed (2026-07-09): The "+" crosshair and the interactable dot both showed at the same time
+  when looking at an interactable object.
+  - SimpleFirstPersonPlayer now exposes LookingAtInteractable.
+  - PrototypeGameManager only draws the "+" crosshair when NOT looking at an interactable, so the
+    "+" disappears (and the small dot appears instead) on interactables, then the "+" reappears when
+    looking away. Verified in Play Mode from the spawn: empty view = "+", interactable = dot, look away = "+".
+
+
 - Fixed: You can press esc to unlock mouse but you cannot lock it back.
   - The player can now click the mouse button to lock the cursor again.
 

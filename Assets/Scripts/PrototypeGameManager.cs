@@ -17,6 +17,9 @@ public class PrototypeGameManager : MonoBehaviour
     private string message = "Check the small things before bed.";
     private float messageTimer = 4f;
 
+    // Cached so the "+" crosshair can hide while looking at an interactable.
+    private SimpleFirstPersonPlayer crosshairPlayer;
+
     void Awake()
     {
         GameManager.EnsureExists();
@@ -197,7 +200,17 @@ public class PrototypeGameManager : MonoBehaviour
         labelStyle.fontSize = 18;
         labelStyle.normal.textColor = Color.white;
 
-        GUI.Label(new Rect(Screen.width / 2 - 5, Screen.height / 2 - 10, 20, 20), "+", labelStyle);
+        // Draw the "+" crosshair only when NOT looking at an interactable.
+        // When the player looks at something usable, the controller shows a small dot
+        // instead, so the two never appear at the same time.
+        if (crosshairPlayer == null)
+        {
+            crosshairPlayer = FindObjectOfType<SimpleFirstPersonPlayer>();
+        }
+        if (crosshairPlayer == null || !crosshairPlayer.LookingAtInteractable)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 5, Screen.height / 2 - 10, 20, 20), "+", labelStyle);
+        }
 
         string sceneName = SceneManager.GetActiveScene().name;
 
