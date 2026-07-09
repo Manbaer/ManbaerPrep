@@ -2379,6 +2379,8 @@ GameObject:
   - component: {fileID: 103888678}
   - component: {fileID: 103888680}
   - component: {fileID: 103888679}
+  - component: {fileID: 103888682}
+  - component: {fileID: 103888681}
   m_Layer: 0
   m_Name: Hallway Runner
   m_TagString: Untagged
@@ -2458,6 +2460,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103888677}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &103888681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103888677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &103888682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103888677}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &103944764
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,6 +8287,8 @@ GameObject:
   - component: {fileID: 416415526}
   - component: {fileID: 416415525}
   - component: {fileID: 416415524}
+  - component: {fileID: 416415528}
+  - component: {fileID: 416415527}
   m_Layer: 0
   m_Name: Kitchen Floor Tile
   m_TagString: Untagged
@@ -8330,6 +8368,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &416415527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416415523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 2
+--- !u!65 &416415528
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416415523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &418010561
 GameObject:
   m_ObjectHideFlags: 0
@@ -10056,6 +10128,8 @@ GameObject:
   - component: {fileID: 474867458}
   - component: {fileID: 474867460}
   - component: {fileID: 474867461}
+  - component: {fileID: 474867462}
+  - component: {fileID: 474867463}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -10212,6 +10286,51 @@ MonoBehaviour:
   breathingMoodMultiplier: 1
   smoothing: 10
   effectsEnabled: 1
+  externalPositionOffset: {x: 0, y: 0, z: 0}
+  externalEulerOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &474867462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474867456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378f295114600454e8760fb00306204f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamCameraMood
+  mood: 4
+  windRockDegrees: 0.5
+  windSpeed: 0.25
+  clinicalMotion: 0.15
+  extraGrain: 0.18
+  extraChroma: 0.06
+  bloomBoost: 0.6
+  hallwayDistortion: -0.06
+  extraLookSmoothing: 0.03
+  fovDriftDegrees: 3
+  fovDriftSpeed: 0.15
+  finalActFlag: HouseAfterSleepStarted
+--- !u!114 &474867463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474867456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9dca12e3f6bae4dae0a9b56c5ba206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraLean
+  enableLean: 0
+  leanLeftKey: 113
+  leanRightKey: 0
+  leanDistance: 0.28
+  leanRoll: 6
+  leanSpeed: 8
+  wallMargin: 0.12
 --- !u!1 &477746591
 GameObject:
   m_ObjectHideFlags: 0
@@ -11897,6 +12016,7 @@ GameObject:
   - component: {fileID: 537051362}
   - component: {fileID: 537051361}
   - component: {fileID: 537051360}
+  - component: {fileID: 537051364}
   m_Layer: 0
   m_Name: Fuse Room Floor
   m_TagString: Untagged
@@ -11997,6 +12117,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537051364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537051359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 4
 --- !u!1 &545617073
 GameObject:
   m_ObjectHideFlags: 0
@@ -12009,6 +12142,7 @@ GameObject:
   - component: {fileID: 545617077}
   - component: {fileID: 545617076}
   - component: {fileID: 545617075}
+  - component: {fileID: 545617078}
   m_Layer: 0
   m_Name: Street
   m_TagString: Untagged
@@ -12109,6 +12243,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545617073}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &545617078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545617073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 6
 --- !u!1 &547801081
 GameObject:
   m_ObjectHideFlags: 0
@@ -13992,6 +14139,7 @@ GameObject:
   - component: {fileID: 642057184}
   - component: {fileID: 642057183}
   - component: {fileID: 642057182}
+  - component: {fileID: 642057185}
   m_Layer: 0
   m_Name: Porch Stoop
   m_TagString: Untagged
@@ -14092,6 +14240,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642057180}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &642057185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642057180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 4
 --- !u!1 &643273603
 GameObject:
   m_ObjectHideFlags: 0
@@ -14769,6 +14930,7 @@ GameObject:
   - component: {fileID: 682238082}
   - component: {fileID: 682238081}
   - component: {fileID: 682238080}
+  - component: {fileID: 682238084}
   m_Layer: 0
   m_Name: House Floor
   m_TagString: Untagged
@@ -14869,6 +15031,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &682238084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682238079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 1
 --- !u!1 &686956847
 GameObject:
   m_ObjectHideFlags: 0
@@ -16283,6 +16458,8 @@ GameObject:
   - component: {fileID: 743715220}
   - component: {fileID: 743715222}
   - component: {fileID: 743715221}
+  - component: {fileID: 743715224}
+  - component: {fileID: 743715223}
   m_Layer: 0
   m_Name: Carpet Faded Behind Couch
   m_TagString: Untagged
@@ -16362,6 +16539,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743715219}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &743715223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743715219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &743715224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743715219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &745415763
 GameObject:
   m_ObjectHideFlags: 0
@@ -20740,6 +20951,7 @@ GameObject:
   - component: {fileID: 899821289}
   - component: {fileID: 899821288}
   - component: {fileID: 899821287}
+  - component: {fileID: 899821290}
   m_Layer: 0
   m_Name: Sidewalk
   m_TagString: Untagged
@@ -20840,6 +21052,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899821285}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &899821290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899821285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 6
 --- !u!1 &903450065
 GameObject:
   m_ObjectHideFlags: 0
@@ -23915,6 +24140,7 @@ GameObject:
   - component: {fileID: 1019393175}
   - component: {fileID: 1019393174}
   - component: {fileID: 1019393173}
+  - component: {fileID: 1019393176}
   m_Layer: 0
   m_Name: Driveway
   m_TagString: Untagged
@@ -24015,6 +24241,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019393171}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1019393176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019393171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 4
 --- !u!1 &1020994532
 GameObject:
   m_ObjectHideFlags: 0
@@ -24724,6 +24963,8 @@ GameObject:
   - component: {fileID: 1058586426}
   - component: {fileID: 1058586425}
   - component: {fileID: 1058586424}
+  - component: {fileID: 1058586428}
+  - component: {fileID: 1058586427}
   m_Layer: 0
   m_Name: Living Room Rug
   m_TagString: Untagged
@@ -24803,6 +25044,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1058586427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058586423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &1058586428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058586423}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1062061661
 GameObject:
   m_ObjectHideFlags: 0
@@ -29403,6 +29678,7 @@ GameObject:
   - component: {fileID: 1196171021}
   - component: {fileID: 1196171020}
   - component: {fileID: 1196171019}
+  - component: {fileID: 1196171022}
   m_Layer: 0
   m_Name: Yard Grass
   m_TagString: Untagged
@@ -29503,6 +29779,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196171017}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1196171022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196171017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 5
 --- !u!1 &1199270429
 GameObject:
   m_ObjectHideFlags: 0
@@ -30293,6 +30582,8 @@ GameObject:
   - component: {fileID: 1214720004}
   - component: {fileID: 1214720003}
   - component: {fileID: 1214720002}
+  - component: {fileID: 1214720006}
+  - component: {fileID: 1214720005}
   m_Layer: 0
   m_Name: Living Room Carpet
   m_TagString: Untagged
@@ -30372,6 +30663,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214720005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214720001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &1214720006
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214720001}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1219746406
 GameObject:
   m_ObjectHideFlags: 0
@@ -30507,6 +30832,8 @@ GameObject:
   - component: {fileID: 1225034447}
   - component: {fileID: 1225034446}
   - component: {fileID: 1225034445}
+  - component: {fileID: 1225034449}
+  - component: {fileID: 1225034448}
   m_Layer: 0
   m_Name: Hallway Wood Floor
   m_TagString: Untagged
@@ -30586,6 +30913,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225034448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225034444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 1
+--- !u!65 &1225034449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225034444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1231468955
 GameObject:
   m_ObjectHideFlags: 0
@@ -33582,6 +33943,8 @@ GameObject:
   - component: {fileID: 1337849530}
   - component: {fileID: 1337849532}
   - component: {fileID: 1337849531}
+  - component: {fileID: 1337849534}
+  - component: {fileID: 1337849533}
   m_Layer: 0
   m_Name: Carpet Wear TV Path
   m_TagString: Untagged
@@ -33661,6 +34024,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337849529}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1337849533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337849529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &1337849534
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337849529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0598546, y: 25, z: 1.2686144}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1338007272
 GameObject:
   m_ObjectHideFlags: 0
@@ -35044,6 +35441,8 @@ GameObject:
   - component: {fileID: 1445364914}
   - component: {fileID: 1445364916}
   - component: {fileID: 1445364915}
+  - component: {fileID: 1445364918}
+  - component: {fileID: 1445364917}
   m_Layer: 0
   m_Name: Carpet Wear By Bed
   m_TagString: Untagged
@@ -35123,6 +35522,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445364913}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1445364917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445364913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &1445364918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445364913}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0498289, y: 25, z: 1.1378227}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1447716473
 GameObject:
   m_ObjectHideFlags: 0
@@ -42227,6 +42660,8 @@ GameObject:
   - component: {fileID: 1735848477}
   - component: {fileID: 1735848476}
   - component: {fileID: 1735848475}
+  - component: {fileID: 1735848479}
+  - component: {fileID: 1735848478}
   m_Layer: 0
   m_Name: Bathroom Floor Tile
   m_TagString: Untagged
@@ -42306,6 +42741,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735848478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735848474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 3
+--- !u!65 &1735848479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735848474}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1736078063
 GameObject:
   m_ObjectHideFlags: 0
@@ -46716,6 +47185,7 @@ GameObject:
   - component: {fileID: 1921189849}
   - component: {fileID: 1921189848}
   - component: {fileID: 1921189847}
+  - component: {fileID: 1921189850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46796,6 +47266,27 @@ Transform:
   - {fileID: 474867459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1921189850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921189846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3201d0a652780441a0f6a15fa5a5c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepPlayer
+  player: {fileID: 1921189847}
+  walkStride: 0.75
+  sprintStride: 0.9
+  moveThreshold: 0.35
+  volume: 0.55
+  volumeJitter: 0.12
+  pitchJitter: 0.08
+  groundRayLength: 2
+  defaultSurface: 1
 --- !u!1 &1926408415
 GameObject:
   m_ObjectHideFlags: 0
@@ -48070,6 +48561,7 @@ GameObject:
   - component: {fileID: 2010855057}
   - component: {fileID: 2010855056}
   - component: {fileID: 2010855055}
+  - component: {fileID: 2010855058}
   m_Layer: 0
   m_Name: Porch Step 1
   m_TagString: Untagged
@@ -48170,6 +48662,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010855053}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2010855058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010855053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 4
 --- !u!1 &2014023379
 GameObject:
   m_ObjectHideFlags: 0
@@ -51327,6 +51832,8 @@ GameObject:
   - component: {fileID: 2098073147}
   - component: {fileID: 2098073146}
   - component: {fileID: 2098073145}
+  - component: {fileID: 2098073149}
+  - component: {fileID: 2098073148}
   m_Layer: 0
   m_Name: Bedroom Carpet
   m_TagString: Untagged
@@ -51406,6 +51913,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2098073148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098073144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde209f33dfc3dc49bb5cdec87028153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepSurface
+  surface: 0
+--- !u!65 &2098073149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098073144}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 15.000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2121290676
 GameObject:
   m_ObjectHideFlags: 0

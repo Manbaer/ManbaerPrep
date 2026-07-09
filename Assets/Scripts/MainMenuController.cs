@@ -31,7 +31,13 @@ public class MainMenuController : MonoBehaviour
 
         if (settingsPanel != null)
         {
-            settingsPanel.SetActive(true);
+            settingsPanel.SetActive(false);
+        }
+
+        // Open the full settings overlay; Back returns to the main menu.
+        if (SettingsMenu.Instance != null)
+        {
+            SettingsMenu.Instance.Open(ShowMainMenu);
         }
     }
 

@@ -75,7 +75,13 @@ public class PauseMenuController : MonoBehaviour
 
         if (settingsPanel != null)
         {
-            settingsPanel.SetActive(true);
+            settingsPanel.SetActive(false);
+        }
+
+        // Open the full settings overlay; Back returns to the pause menu.
+        if (SettingsMenu.Instance != null)
+        {
+            SettingsMenu.Instance.Open(BackToPauseMenu);
         }
     }
 

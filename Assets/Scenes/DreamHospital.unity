@@ -5690,6 +5690,8 @@ GameObject:
   - component: {fileID: 1145905015}
   - component: {fileID: 1145905016}
   - component: {fileID: 1145905018}
+  - component: {fileID: 1145905019}
+  - component: {fileID: 1145905020}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -5802,6 +5804,51 @@ MonoBehaviour:
   breathingMoodMultiplier: 1
   smoothing: 10
   effectsEnabled: 1
+  externalPositionOffset: {x: 0, y: 0, z: 0}
+  externalEulerOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1145905019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145905014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378f295114600454e8760fb00306204f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamCameraMood
+  mood: 1
+  windRockDegrees: 0.5
+  windSpeed: 0.25
+  clinicalMotion: 0.15
+  extraGrain: 0.18
+  extraChroma: 0.06
+  bloomBoost: 0.6
+  hallwayDistortion: -0.06
+  extraLookSmoothing: 0.03
+  fovDriftDegrees: 3
+  fovDriftSpeed: 0.15
+  finalActFlag: HouseAfterSleepStarted
+--- !u!114 &1145905020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145905014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9dca12e3f6bae4dae0a9b56c5ba206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraLean
+  enableLean: 0
+  leanLeftKey: 113
+  leanRightKey: 0
+  leanDistance: 0.28
+  leanRoll: 6
+  leanSpeed: 8
+  wallMargin: 0.12
 --- !u!1 &1148390973
 GameObject:
   m_ObjectHideFlags: 0
@@ -8746,6 +8793,7 @@ GameObject:
   - component: {fileID: 1800268393}
   - component: {fileID: 1800268392}
   - component: {fileID: 1800268391}
+  - component: {fileID: 1800268394}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8826,6 +8874,27 @@ Transform:
   - {fileID: 1145905017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800268394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800268390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3201d0a652780441a0f6a15fa5a5c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootstepPlayer
+  player: {fileID: 1800268391}
+  walkStride: 0.75
+  sprintStride: 0.9
+  moveThreshold: 0.35
+  volume: 0.55
+  volumeJitter: 0.12
+  pitchJitter: 0.08
+  groundRayLength: 2
+  defaultSurface: 3
 --- !u!1 &1811392055
 GameObject:
   m_ObjectHideFlags: 0

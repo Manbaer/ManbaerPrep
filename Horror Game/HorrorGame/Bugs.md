@@ -1,5 +1,13 @@
 When playing the scene, here are the bugs I noticed:
 
+- Fixed (2026-07-09): The house analog post-processing was missing chromatic aberration, lens
+  distortion, and tonemapping after any recompile.
+  - Cause: those three overrides had been added to HouseMoodProfile.asset in code with prof.Add<T>()
+    but never written into the asset as sub-assets, so they were discarded on domain reload.
+  - Fix: re-added them with AssetDatabase.AddObjectToAsset so they persist. The dream scenes use a
+    proper copy of the profile (Assets/Settings/DreamAnalogProfile.asset).
+
+
 - Fixed (2026-07-09): The "+" crosshair and the interactable dot both showed at the same time
   when looking at an interactable object.
   - SimpleFirstPersonPlayer now exposes LookingAtInteractable.

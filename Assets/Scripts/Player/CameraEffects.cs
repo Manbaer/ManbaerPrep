@@ -70,6 +70,11 @@ public class CameraEffects : MonoBehaviour
     [Tooltip("When reading an important object you can disable bob from other scripts.")]
     public bool effectsEnabled = true;
 
+    // Extra offset that other scripts (e.g. DreamCameraMood wind) can add on top of
+    // the normal bob/sway without fighting it. Set these every frame; they are just added.
+    [HideInInspector] public Vector3 externalPositionOffset;
+    [HideInInspector] public Vector3 externalEulerOffset;
+
     // Neutral pose captured on Start (usually zero, since the camera sits under a pivot).
     private Vector3 neutralPosition;
     private Quaternion neutralRotation;
@@ -205,7 +210,7 @@ public class CameraEffects : MonoBehaviour
 
     void Apply()
     {
-        transform.localPosition = neutralPosition + currentPosOffset;
-        transform.localRotation = neutralRotation * Quaternion.Euler(currentRotOffset);
+        transform.localPosition = neutralPosition + currentPosOffset + externalPositionOffset;
+        transform.localRotation = neutralRotation * Quaternion.Euler(currentRotOffset + externalEulerOffset);
     }
 }

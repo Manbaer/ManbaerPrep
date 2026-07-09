@@ -1,3 +1,70 @@
+2026-07-09 Settings, Visual Presets, Dream Camera Moods, Optional Lean (Current_Tasks Chunks 2-5)
+
+- Chunk 2 - Settings system + menu:
+  - New Assets/Scripts/Settings/GameSettings.cs: a DontDestroyOnLoad singleton holding every option,
+    saving/loading with PlayerPrefs, and re-applying itself on each scene load to the player, camera
+    effects, analog filter, and post-processing. Auto-creates itself before the first scene.
+  - New Assets/Scripts/Settings/SettingsMenu.cs: an IMGUI settings overlay (matching the project's
+    on-screen style) with a dark backdrop and GUI.depth so it sits above the HUD. Sliders/toggles for
+    FOV, X/Y sensitivity, invert-Y, raw mouse, head-bob/sway/breathing strength, screen-shake, analog
+    strength, film grain, chromatic aberration, motion blur, reticle, and sprint hold/toggle, plus
+    Reset to defaults. The existing Main Menu and Pause "Settings" buttons now open it (Back returns).
+  - Verified in Play Mode: changing values updates the live camera/effects/volume and persists to
+    PlayerPrefs; screenshots confirmed the panel renders and scrolls.
+- Chunk 3 - Visual presets: Low / Medium / High / Analog buttons in the settings menu. Each sets the
+  analog strength, grain, and chromatic aberration (and the URP quality level, which this project only
+  has one of, so it safely clamps). Presets persist. Verified Low=0.25 vs Analog=1.0 analog strength.
+- Chunk 4 - Per-dream authored camera moods (new Assets/Scripts/Dream/DreamCameraMood.cs on each dream
+  camera; CameraEffects gained an external-offset hook so moods layer on without fighting bob/sway):
+  - Wheat field: a slow, soft two-rate wind that gently rocks the view (<=0.5 deg). Verified ~0.47 deg.
+  - Hospital: unnaturally stable - camera motion scaled to 15% of the player's setting. Verified.
+  - Gas station: stronger analog noise + wet neon bloom (grain 0.2->0.38, chroma ->0.11, bloom ->1.5).
+    Added a global post Volume + enabled camera post-processing. Verified.
+  - Endless hallway: heavier turn smoothing (+0.03s) and a near-invisible lens bend (-0.06). Verified.
+  - House After Sleep (Day 6): a slow 3-degree FOV drift that only starts once HouseAfterSleepStarted
+    is set, easing back otherwise. Verified it stays put with no flag and drifts once flagged.
+  - All effects are gradual, reversible, and respect the player's analog/motion settings.
+- Chunk 5 (optional) - Corner lean: new Assets/Scripts/Player/CameraLean.cs. A camera-only lean (never
+  moves the CharacterController, so it can't clip through walls) with a sideways wall-ray clamp and a
+  gentle roll. Because E is this game's interact key, lean is OFF by default with configurable keys, so
+  it never interferes with interaction. Verified the wall-clamped offset + roll when enabled.
+- Fixed a latent bug from the earlier analog pass: the ChromaticAberration, LensDistortion, and
+  Tonemapping added to HouseMoodProfile had not persisted (they were never written as asset sub-assets
+  and were lost on domain reload). Re-added them properly with AddObjectToAsset; the house now keeps its
+  full analog stack. Created Assets/Settings/DreamAnalogProfile.asset (a proper copy) for the dreams.
+- All five scenes saved; no console errors or warnings throughout.
+
+2026-07-09 Footsteps And Physical Presence (Current_Tasks Chunk 1)
+
+- Added a code-generated footstep system so the player feels grounded, with no audio files needed
+  (same runtime-AudioSource pattern as SimpleAmbientHum, which plays reliably).
+- New Assets/Scripts/Audio/FootstepSurface.cs: a small component + enum (Carpet, Wood, Vinyl, Tile,
+  Concrete, Grass, WetPavement) that tags what a floor sounds like.
+- New Assets/Scripts/Audio/FootstepPlayer.cs (on the player):
+  - Triggers a footstep every stride of REAL distance travelled (walk 0.75m, sprint 0.9m), read from
+    the CharacterController velocity - so no steps play while standing still or pushing into a wall.
+  - Finds the surface with a short downward ray that reads FootstepSurface (nearest wins, so a runner
+    rug over wood correctly sounds like carpet).
+  - Synthesises each footstep in code as shaped noise with per-surface character: carpet is soft/dull
+    and quiet, wood has a little tonal knock, vinyl is a soft tap, tile is a sharp bright click,
+    concrete is hard, grass is a soft rustle, wet pavement adds a splashy tail. Three variants per
+    surface plus random pitch/volume jitter so steps never sound identical.
+  - Quieter on bedroom carpet, sharper in the bathroom and fuse room, as specified.
+  - Room-appropriate reverb: a light Room preset indoors, a stronger Bathroom preset on tile, and dry
+    outdoors. Sprint steps are slightly louder (anxious fast walk). A softer, lower "settle" step plays
+    when the player lands after descending a small step.
+- Tagged the house floors: living room / bedroom / hallway runner / carpet-wear paths / rug = Carpet,
+  hallway bare = Wood, kitchen = Vinyl, bathroom = Tile, fuse room = Concrete, plus exterior Street /
+  Sidewalk = WetPavement, Driveway / porch = Concrete, yard = Grass. The collider-less interior floor
+  skins got thin trigger colliders so the ray can read them without affecting movement.
+- Added FootstepPlayer to the four dream scenes with a sensible default surface each (hallway = wood,
+  wheat field = grass, hospital = tile, gas station = concrete).
+- Verified in Play Mode: 7 surface clip sets build, surface detection returns the right surface on
+  every tagged floor, every surface plays without errors and switches reverb correctly. No console
+  errors or warnings. All five scenes saved.
+- Deferred (still in Current_Tasks): richer per-surface clothing movement is folded into the sprint
+  volume for now; a fuller clothing/gear layer can come with the audio polish pass.
+
 2026-07-09 Camera, Movement, And Analog Post Rework (Fears-to-Fathom Feel)
 
 - Reworked the first-person feel toward a grounded, lo-fi, "standing inside the house" atmosphere
